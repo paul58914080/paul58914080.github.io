@@ -47,7 +47,7 @@ sdk list
 List all installed packages
 
 ```
-sdk list installed
+sdk current
 ```
 
 List all available versions of a package
