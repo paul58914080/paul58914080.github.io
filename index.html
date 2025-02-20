@@ -316,6 +316,18 @@
     padding-top: 2rem;
   }
 
+  .md-typeset .md-button {
+    background-color: #dd2e57;
+    color: var(--md-primary-bg-color);
+    border-color: #dd2e57;
+  }
+
+  .img-icon {
+    width: .9rem;
+    height: .9rem;
+    color: var(--md-primary-bg-color);
+    filter: invert(1);
+  }
 </style>
 <section class="mdx-container home-header">
   <div class="md-grid md-typeset">
@@ -342,6 +354,28 @@
             </li>
           </ul>
         </h2>
+        <div class="d-flex align-items-center d-flex align-items-center">
+          <div class="pb-2"><h3>Connect with me on</h3></div>
+          <div class="px-2">
+            <a class="md-button md-button--secondary d-flex align-items-center"
+               href="https://github.com/paul58914080" target="_blank">
+              <img
+                  src="img/github.svg"
+                  alt="GitHub" class="img-icon me-2"/>
+              Github
+            </a>
+          </div>
+          <div class="px-2">
+            <a class="md-button md-button--secondary d-flex align-items-center"
+               href="https://www.linkedin.com/in/paul-williams-the-one-from-matrix/"
+               target="_blank">
+              <img
+                  src="img/linkedin.svg"
+                  alt="LinkedIn" class="img-icon linkedin me-2">
+              LinkedIn
+            </a>
+          </div>
+        </div>
       </div>
     </div>
   </div>
