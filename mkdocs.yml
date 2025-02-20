@@ -71,8 +71,8 @@ extra_css:
   - stylesheets/bootstrap-grid.min.css
   - stylesheets/skills.css
   - stylesheets/palette.min.css
-  - stylesheets/main.min.css
-  - stylesheets/custom.min.css
+#  - stylesheets/main.min.css
+#  - stylesheets/custom.min.css
 
 nav:
   - About me: 'index.md'
