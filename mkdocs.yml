@@ -99,4 +99,5 @@ nav:
       - Node: 'pages/tools/node/index.md'
       - Yarn: 'pages/tools/yarn/index.md'
   - Tips & Tricks:
+      - Beautify terminals: 'pages/tips-and-tricks/beautify-terminal/index.md'
       - IntelliJ: 'pages/tips-and-tricks/intellij/index.md'
