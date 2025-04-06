@@ -14,7 +14,7 @@
     
     
       
-        <title>RxJS - Paul WILLIAMS</title>
+        <title>Beautify terminals - Paul WILLIAMS</title>
       
     
     
@@ -69,6 +69,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#beautify-terminal" class="md-skip">
+          Skip to content
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -100,7 +105,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              RxJS
+              Beautify terminals
             
           </span>
         </div>
@@ -184,15 +189,13 @@
         
   
   
-    
-  
 
 
   
   
   
     <li class="md-tabs__item">
-      <a href="../scaffold-angular/" class="md-tabs__link md-tabs__link--active">
+      <a href="../../frontend/scaffold-angular/" class="md-tabs__link">
         Frontend
       </a>
     </li>
@@ -266,13 +269,15 @@
         
   
   
+    
+  
 
 
   
   
   
     <li class="md-tabs__item">
-      <a href="../../tips-and-tricks/beautify-terminal/" class="md-tabs__link">
+      <a href="./" class="md-tabs__link md-tabs__link--active">
         Tips & Tricks
       </a>
     </li>
@@ -350,14 +355,12 @@
 
   
   
-    
-  
   
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" checked>
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" data-md-state="indeterminate" type="checkbox" id="__nav_2" checked>
       
       
       
@@ -380,7 +383,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../scaffold-angular/" class="md-nav__link">
+      <a href="../../frontend/scaffold-angular/" class="md-nav__link">
         Scaffold angular
       </a>
     </li>
@@ -394,7 +397,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../testing-angular/" class="md-nav__link">
+      <a href="../../frontend/testing-angular/" class="md-nav__link">
         Testing angular
       </a>
     </li>
@@ -406,19 +409,11 @@
               
   
   
-    
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-      
-      
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../frontend/rxjs/" class="md-nav__link">
         RxJS
       </a>
-      
     </li>
   
 
@@ -430,7 +425,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../micro-frontend/" class="md-nav__link">
+      <a href="../../frontend/micro-frontend/" class="md-nav__link">
         Micro frontend
       </a>
     </li>
@@ -768,12 +763,14 @@
 
   
   
+    
+  
   
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7" data-md-state="indeterminate" type="checkbox" id="__nav_7" checked>
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7" type="checkbox" id="__nav_7" checked>
       
       
       
@@ -794,11 +791,100 @@
               
   
   
+    
   
-    <li class="md-nav__item">
-      <a href="../../tips-and-tricks/beautify-terminal/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Beautify terminals
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         Beautify terminals
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#installing-oh-my-zsh" class="md-nav__link">
+    Installing oh my zsh
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#installing-powerlevel10k" class="md-nav__link">
+    Installing Powerlevel10k
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#installing-meslo-nerd-fonts" class="md-nav__link">
+    Installing Meslo Nerd Fonts
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#installing-plugins" class="md-nav__link">
+    Installing plugins
+  </a>
+  
+    <nav class="md-nav" aria-label="Installing plugins">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#zsh-autosuggestions" class="md-nav__link">
+    zsh-autosuggestions
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#zsh-syntax-highlighting" class="md-nav__link">
+    zsh-syntax-highlighting
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#zsh-history-substring-search" class="md-nav__link">
+    zsh-history-substring-search
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -810,7 +896,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../tips-and-tricks/intellij/" class="md-nav__link">
+      <a href="../intellij/" class="md-nav__link">
         IntelliJ
       </a>
     </li>
@@ -841,6 +927,71 @@
   
   
   
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#installing-oh-my-zsh" class="md-nav__link">
+    Installing oh my zsh
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#installing-powerlevel10k" class="md-nav__link">
+    Installing Powerlevel10k
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#installing-meslo-nerd-fonts" class="md-nav__link">
+    Installing Meslo Nerd Fonts
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#installing-plugins" class="md-nav__link">
+    Installing plugins
+  </a>
+  
+    <nav class="md-nav" aria-label="Installing plugins">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#zsh-autosuggestions" class="md-nav__link">
+    zsh-autosuggestions
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#zsh-syntax-highlighting" class="md-nav__link">
+    zsh-syntax-highlighting
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#zsh-history-substring-search" class="md-nav__link">
+    zsh-history-substring-search
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
   
 </nav>
                   </div>
@@ -854,9 +1005,76 @@
                 
 
 
-  <h1>RxJS</h1>
-
-<p>Coming soon</p>
+<h1 id="beautify-terminal">Beautify terminal<a class="headerlink" href="#beautify-terminal" title="Permanent link">&para;</a></h1>
+<p>Here I are planning to add some tips and tricks to beautify your terminal.</p>
+<p><img alt="img.png" src="img.png" /></p>
+<h2 id="installing-oh-my-zsh">Installing <code>oh my zsh</code><a class="headerlink" href="#installing-oh-my-zsh" title="Permanent link">&para;</a></h2>
+<p>Oh My Zsh is an open source, community-driven framework for managing your Zsh configuration.</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>sh<span class="w"> </span>-c<span class="w"> </span><span class="s2">&quot;</span><span class="k">$(</span>curl<span class="w"> </span>-fsSL<span class="w"> </span>https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh<span class="k">)</span><span class="s2">&quot;</span>
+</span></code></pre></div>
+<details class="info">
+<summary>Read more</summary>
+<p>More about om-myzsh can be found <a href="https://ohmyz.sh/">here</a>.</p>
+</details>
+<h2 id="installing-powerlevel10k">Installing Powerlevel10k<a class="headerlink" href="#installing-powerlevel10k" title="Permanent link">&para;</a></h2>
+<p>In order for the terminal to look like the one in the image above, you need to install Powerlevel10k theme which is a theme for ohmyzsh. You can install Powerlevel10k by running the following command:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/romkatv/powerlevel10k.git<span class="w"> </span><span class="nv">$ZSH_CUSTOM</span>/themes/powerlevel10k
+</span></code></pre></div>
+<p>Configure your terminal to use Powerlevel10k theme by adding the following line to your <code>~/.zshrc</code> file:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="nv">ZSH_THEME</span><span class="o">=</span><span class="s2">&quot;powerlevel10k/powerlevel10k&quot;</span>
+</span></code></pre></div>
+<p>Then, restart your terminal or run the following command to apply the changes:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="nb">source</span><span class="w"> </span>~/.zshrc
+</span></code></pre></div>
+<p>Type <code>p10k configure</code> if the configuration wizard doesn't start automatically.</p>
+<h2 id="installing-meslo-nerd-fonts">Installing Meslo Nerd Fonts<a class="headerlink" href="#installing-meslo-nerd-fonts" title="Permanent link">&para;</a></h2>
+<p>By default, Powerlevel10k uses Meslo Nerd Fonts to display icons and this can be installed by restarting your terminal or <code>source ~/.zshrc</code> command once you have configured Powerlevel10k. You can also install it manually, please refer the official documentation of <a href="https://github.com/romkatv/powerlevel10k?tab=readme-ov-file#manual-font-installation">manual font installation</a></p>
+<p>If you wish to use this font on VSCode, you can install it by configuring the settings of VSCode. You can do this by going to the settings and searching for <code>font family</code> and adding the following line to the settings:</p>
+<div class="language-json highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="p">{</span>
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="w">  </span><span class="nt">&quot;terminal.integrated.fontFamily&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;MesloLGS NF&quot;</span>
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="p">}</span>
+</span></code></pre></div>
+<h2 id="installing-plugins">Installing plugins<a class="headerlink" href="#installing-plugins" title="Permanent link">&para;</a></h2>
+<p>There are some cool plugins that I feel should be in added to your terminal to make it more productive. I have enlisted some of the plugins below that I feel are useful and I highly recommend you to install them.</p>
+<h3 id="zsh-autosuggestions">zsh-autosuggestions<a class="headerlink" href="#zsh-autosuggestions" title="Permanent link">&para;</a></h3>
+<p><strong><code>zsh-autosuggestions</code></strong> is a Zsh plugin that suggests commands as you type based on your command history and completions. It helps you to type commands faster and reduces the need to remember long commands.</p>
+<p>To install <code>zsh-autosuggestions</code>, run the following command:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/zsh-users/zsh-autosuggestions<span class="w"> </span><span class="si">${</span><span class="nv">ZSH_CUSTOM</span><span class="k">:-</span><span class="p">~/.oh-my-zsh/custom</span><span class="si">}</span>/plugins/zsh-autosuggestions
+</span></code></pre></div>
+<p>Then add <code>zsh-autosuggestions</code> to the list of plugins in your <code>~/.zshrc</code> file:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="nv">plugins</span><span class="o">=(</span>git<span class="w"> </span>zsh-autosuggestions<span class="o">)</span>
+</span></code></pre></div>
+<p>Finally, restart your terminal or <code>source ~/.zshrc</code> command to apply the changes.</p>
+<details class="info">
+<summary>Read more</summary>
+<p>Read more about <a href="https://github.com/zsh-users/zsh-autosuggestions?tab=readme-ov-file#zsh-autosuggestions">zsh-autosuggestions</a></p>
+</details>
+<h3 id="zsh-syntax-highlighting">zsh-syntax-highlighting<a class="headerlink" href="#zsh-syntax-highlighting" title="Permanent link">&para;</a></h3>
+<p><strong><code>zsh-syntax-highlighting</code></strong> is a Zsh plugin that provides syntax highlighting for commands as you type. It helps you to identify errors in your commands before you run them.</p>
+<p>To install <code>zsh-syntax-highlighting</code>, run the following command:</p>
+<p><div class="language-bash highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/zsh-users/zsh-syntax-highlighting.git<span class="w"> </span><span class="si">${</span><span class="nv">ZSH_CUSTOM</span><span class="k">:-</span><span class="p">~/.oh-my-zsh/custom</span><span class="si">}</span>/plugins/zsh-syntax-highlighting
+</span></code></pre></div>
+Then add <code>zsh-syntax-highlighting</code> to the list of plugins in your <code>~/.zshrc</code> file:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="nv">plugins</span><span class="o">=(</span>git<span class="w"> </span>zsh-autosuggestions<span class="w"> </span>zsh-syntax-highlighting<span class="o">)</span>
+</span></code></pre></div>
+<p>Finally, restart your terminal or <code>source ~/.zshrc</code> command to apply the changes.</p>
+<details class="info">
+<summary>Read more</summary>
+<p>Read more about <a href="https://github.com/zsh-users/zsh-syntax-highlighting?tab=readme-ov-file#zsh-syntax-highlighting-">zsh-syntax-highlighting</a></p>
+</details>
+<h3 id="zsh-history-substring-search">zsh-history-substring-search<a class="headerlink" href="#zsh-history-substring-search" title="Permanent link">&para;</a></h3>
+<p><strong><code>zsh-history-substring-search</code></strong> is a Zsh plugin that allows you to search your command history by typing a substring of the command. It helps you to quickly find and reuse commands from your history.</p>
+<p>To install <code>zsh-history-substring-search</code>, run the following command:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="w"> </span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/zsh-users/zsh-history-substring-search<span class="w"> </span><span class="si">${</span><span class="nv">ZSH_CUSTOM</span><span class="k">:-</span><span class="p">~/.oh-my-zsh/custom</span><span class="si">}</span>/plugins/zsh-history-substring-search
+</span></code></pre></div>
+<p>Then add <code>zsh-history-substring-search</code> to the list of plugins in your <code>~/.zshrc</code> file:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="nv">plugins</span><span class="o">=(</span>git<span class="w"> </span>zsh-autosuggestions<span class="w"> </span>zsh-syntax-highlighting<span class="w"> </span>zsh-history-substring-search<span class="o">)</span>
+</span></code></pre></div>
+<p>Finally, restart your terminal or <code>source ~/.zshrc</code> command to apply the changes.</p>
+<details class="info">
+<summary>Read more</summary>
+<p>Read more about <a href="https://github.com/zsh-users/zsh-history-substring-search?tab=readme-ov-file#zsh-history-substring-search">zsh-history-substring-search</a></p>
+</details>
 
               
             </article>
