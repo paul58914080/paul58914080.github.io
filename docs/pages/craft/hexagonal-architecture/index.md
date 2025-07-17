@@ -8,8 +8,6 @@ description: >
 
 # Hexagonal architecture
 
-## Introduction
-
 The first time I encountered and got inspired by the hexagonal architecture was when I saw a series (3 in total) of YouTube video by [Alistair COCKBURN](https://en.wikipedia.org/wiki/Alistair_Cockburn) and [Thomas PIERRAIN](https://github.com/tpierrain). Alistair was talking about the ports and adapters pattern, which is another name for the hexagonal architecture. I was amazed by the simplicity and the power of this architecture. It was a real eye-opener for me. I have been using this architecture ever since.
 
 <h4>Ports are nothing but interface\contracts and adapters are the ones that implement these interfaces. The core of the application is the domain and the domain should not know anything about the outside world. The domain should be pure and should not have any dependencies on the outside world. The domain should be the center of the application and everything else should be connected to the domain.
