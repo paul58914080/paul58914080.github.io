@@ -71,11 +71,15 @@ extra_css:
   - stylesheets/bootstrap-grid.min.css
   - stylesheets/skills.css
   - stylesheets/palette.min.css
+  - stylesheets/custom.css
+  - stylesheets/typography.css
 #  - stylesheets/main.min.css
 #  - stylesheets/custom.min.css
 
 nav:
   - About me: 'index.md'
+  - Craft:
+      - API first: 'pages/craft/api-first/index.md'
   - Frontend:
       - Scaffold angular: 'pages/frontend/scaffold-angular/index.md'
       - Testing angular: 'pages/frontend/testing-angular/index.md'

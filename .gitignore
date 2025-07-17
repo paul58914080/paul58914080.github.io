@@ -1,3 +1,6 @@
 .idea
 *.iml
 site
+
+*.drawio.bkp
+*.drawio.dtmp
