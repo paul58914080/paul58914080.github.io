@@ -81,6 +81,8 @@ nav:
   - Craft:
       - API first: 'pages/craft/api-first/index.md'
       - Hexagonal architecture: 'pages/craft/hexagonal-architecture/index.md'
+  - Data:
+      - Introduction: 'pages/data/introduction/index.md'
   - Frontend:
       - Scaffold angular: 'pages/frontend/scaffold-angular/index.md'
       - Testing angular: 'pages/frontend/testing-angular/index.md'
