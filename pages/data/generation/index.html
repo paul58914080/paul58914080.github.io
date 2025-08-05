@@ -7,11 +7,6 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="A writeup on the hexagonal architecture.
-">
-      
-      
-        <meta name="author" content="Paul WILLIAMS">
       
       
       <link rel="icon" href="../../../assets/images/favicon.png">
@@ -19,7 +14,7 @@
     
     
       
-        <title>Hexagonal architecture - Paul WILLIAMS</title>
+        <title>Index - Paul WILLIAMS</title>
       
     
     
@@ -78,11 +73,6 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
-        
-        <a href="#hexagonal-architecture" class="md-skip">
-          Skip to content
-        </a>
-      
     </div>
     <div data-md-component="announce">
       
@@ -114,7 +104,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Hexagonal architecture
+              Index
             
           </span>
         </div>
@@ -198,15 +188,13 @@
         
   
   
-    
-  
 
 
   
   
   
     <li class="md-tabs__item">
-      <a href="../api-first/" class="md-tabs__link md-tabs__link--active">
+      <a href="../../craft/api-first/" class="md-tabs__link">
         Craft
       </a>
     </li>
@@ -222,7 +210,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../../data/introduction/" class="md-tabs__link">
+      <a href="../introduction/" class="md-tabs__link">
         Data
       </a>
     </li>
@@ -396,14 +384,12 @@
 
   
   
-    
-  
   
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" checked>
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" data-md-state="indeterminate" type="checkbox" id="__nav_2" checked>
       
       
       
@@ -426,7 +412,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../api-first/" class="md-nav__link">
+      <a href="../../craft/api-first/" class="md-nav__link">
         API first
       </a>
     </li>
@@ -438,120 +424,11 @@
               
   
   
-    
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          Hexagonal architecture
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../craft/hexagonal-architecture/" class="md-nav__link">
         Hexagonal architecture
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#where-could-i-use-and-where-i-should-not-use" class="md-nav__link">
-    Where could I use and where I should NOT use ?
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#key-definitions" class="md-nav__link">
-    Key definitions
-  </a>
-  
-    <nav class="md-nav" aria-label="Key definitions">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#domain" class="md-nav__link">
-    Domain
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#ports" class="md-nav__link">
-    Ports
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#adapters" class="md-nav__link">
-    Adapters
-  </a>
-  
-    <nav class="md-nav" aria-label="Adapters">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#left-side-adapters-aka-primary-adapters" class="md-nav__link">
-    Left-side adapters a.k.a primary adapters
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#right-side-adapters-aka-secondary-adapters" class="md-nav__link">
-    Right-side adapters a.k.a secondary adapters
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#illustrations" class="md-nav__link">
-    Illustrations
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#references" class="md-nav__link">
-    References
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -597,7 +474,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../data/introduction/" class="md-nav__link">
+      <a href="../introduction/" class="md-nav__link">
         Introduction
       </a>
     </li>
@@ -1084,91 +961,6 @@
   
   
   
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#where-could-i-use-and-where-i-should-not-use" class="md-nav__link">
-    Where could I use and where I should NOT use ?
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#key-definitions" class="md-nav__link">
-    Key definitions
-  </a>
-  
-    <nav class="md-nav" aria-label="Key definitions">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#domain" class="md-nav__link">
-    Domain
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#ports" class="md-nav__link">
-    Ports
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#adapters" class="md-nav__link">
-    Adapters
-  </a>
-  
-    <nav class="md-nav" aria-label="Adapters">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#left-side-adapters-aka-primary-adapters" class="md-nav__link">
-    Left-side adapters a.k.a primary adapters
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#right-side-adapters-aka-secondary-adapters" class="md-nav__link">
-    Right-side adapters a.k.a secondary adapters
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#illustrations" class="md-nav__link">
-    Illustrations
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#references" class="md-nav__link">
-    References
-  </a>
-  
-</li>
-      
-    </ul>
   
 </nav>
                   </div>
@@ -1182,63 +974,9 @@
                 
 
 
-<h1 id="hexagonal-architecture">Hexagonal architecture<a class="headerlink" href="#hexagonal-architecture" title="Permanent link">&para;</a></h1>
-<p>The first time I encountered and got inspired by the hexagonal architecture was when I saw a series (3 in total) of YouTube video by <a href="https://en.wikipedia.org/wiki/Alistair_Cockburn">Alistair COCKBURN</a> and <a href="https://github.com/tpierrain">Thomas PIERRAIN</a>. Alistair was talking about the ports and adapters pattern, which is another name for the hexagonal architecture. I was amazed by the simplicity and the power of this architecture. It was a real eye-opener for me. I have been using this architecture ever since.</p>
-<h4>Ports are nothing but interface\contracts and adapters are the ones that implement these interfaces. The core of the application is the domain and the domain should not know anything about the outside world. The domain should be pure and should not have any dependencies on the outside world. The domain should be the center of the application and everything else should be connected to the domain.
-</h4>
+  <h1>Index</h1>
 
-<h2 id="where-could-i-use-and-where-i-should-not-use">Where could I use and where I should NOT use ?<a class="headerlink" href="#where-could-i-use-and-where-i-should-not-use" title="Permanent link">&para;</a></h2>
-<p>I personally found this architecture very useful in the following scenarios:</p>
-<ul>
-<li>When you want to have a clean separation between the domain and the outside\infrastructure world.</li>
-<li>When the infrastructure is changing frequently.</li>
-<li>When you have several infrastructures that you want to support for the same domain.</li>
-<li>When you want to make your application more maintainable and adaptable to changes</li>
-</ul>
-<p>The hexagonal architecture should NOT be used when:</p>
-<ul>
-<li>For small, simple applications where the overhead of setting up the architecture outweighs the benefits.</li>
-<li>When the application has very few dependencies and is unlikely to change or grow significantly.</li>
-<li>In projects with tight deadlines where the initial complexity of setting up hexagonal architecture could delay delivery.</li>
-<li>When the team is not familiar with the architecture and there is insufficient time for learning and adaptation.</li>
-<li>For applications where performance is critical and the additional abstraction layers could introduce unacceptable latency.</li>
-</ul>
-<h2 id="key-definitions">Key definitions<a class="headerlink" href="#key-definitions" title="Permanent link">&para;</a></h2>
-<h3 id="domain">Domain<a class="headerlink" href="#domain" title="Permanent link">&para;</a></h3>
-<figure>
-<p><img alt="Domain" src="img/hexagonal-domain.svg" /></p>
-</figure>
-<p>The domain is the core of the application. It contains the business logic and the entities that represent the business concepts. The domain should be pure and should not have any dependencies on the outside world. The domain should be the center of the application and everything else should be connected to the domain.</p>
-<h3 id="ports">Ports<a class="headerlink" href="#ports" title="Permanent link">&para;</a></h3>
-<figure>
-<p><img alt="Port" src="img/hexagonal-port.svg" /></p>
-</figure>
-<p>Ports are interfaces that define the contract between the domain and the outside world. Think of it a door that allows external world to interact with the domain. The domain should define the ports and the outside world should implement these ports in order to interact with the domain.</p>
-<h3 id="adapters">Adapters<a class="headerlink" href="#adapters" title="Permanent link">&para;</a></h3>
-<h4 id="left-side-adapters-aka-primary-adapters">Left-side adapters a.k.a primary adapters<a class="headerlink" href="#left-side-adapters-aka-primary-adapters" title="Permanent link">&para;</a></h4>
-<blockquote>
-<p>The guy who kicks the domain.</p>
-</blockquote>
-<figure>
-<p><img alt="Port" src="img/hexagonal-left-adapter.svg" /></p>
-</figure>
-<p>Left-side adapters are the ones that implement the ports defined by the domain. These adapters are responsible for translating the external world's requests into domain-specific commands and queries. They are also responsible for translating the domain's responses into a format that the external world can understand.</p>
-<h4 id="right-side-adapters-aka-secondary-adapters">Right-side adapters a.k.a secondary adapters<a class="headerlink" href="#right-side-adapters-aka-secondary-adapters" title="Permanent link">&para;</a></h4>
-<blockquote>
-<p>The guy who is being kicked by the domain.</p>
-</blockquote>
-<figure>
-<p><img alt="Port" src="img/hexagonal-right-adapter.svg" /></p>
-</figure>
-<p>Right-side adapters are the ones that the domain uses to interact with the outside world. These adapters are responsible for translating the domain's commands and queries into a format that the external world can understand. They are also responsible for translating the external world's responses into a format that the domain can understand.</p>
-<h2 id="illustrations">Illustrations<a class="headerlink" href="#illustrations" title="Permanent link">&para;</a></h2>
-<p>These are some of the illustrations that Alastair used in the YouTube videos to explain the hexagonal architecture and those illustrations are very helpful to understand the architecture.</p>
-<h2 id="references">References<a class="headerlink" href="#references" title="Permanent link">&para;</a></h2>
-<ul>
-<li><a href="https://www.youtube.com/watch?v=th4AgBcrEHA">Alistair in the "Hexagone" &#8531;</a></li>
-<li><a href="https://www.youtube.com/watch?v=iALcE8BPs94">Alistair in the "Hexagone" &#8532;</a></li>
-<li><a href="https://www.youtube.com/watch?v=DAe0Bmcyt-4">Alistair in the "Hexagone" 3/3</a></li>
-</ul>
+
 
               
             </article>
