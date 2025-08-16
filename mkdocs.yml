@@ -83,6 +83,7 @@ nav:
       - Hexagonal architecture: 'pages/craft/hexagonal-architecture/index.md'
   - Data:
       - Introduction: 'pages/data/introduction/index.md'
+      - Generation: 'pages/data/generation/index.md'
   - Frontend:
       - Scaffold angular: 'pages/frontend/scaffold-angular/index.md'
       - Testing angular: 'pages/frontend/testing-angular/index.md'
