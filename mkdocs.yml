@@ -84,6 +84,8 @@ nav:
   - Data:
       - Introduction: 'pages/data/introduction/index.md'
       - Generation: 'pages/data/generation/index.md'
+  - AI:
+      - Github Copilot: 'pages/ai/github-copilot/index.md'
   - Frontend:
       - Scaffold angular: 'pages/frontend/scaffold-angular/index.md'
       - Testing angular: 'pages/frontend/testing-angular/index.md'
