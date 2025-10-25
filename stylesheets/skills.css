@@ -73,42 +73,42 @@
 }
 
 .progress-line .java {
-  width: 90%;
+  width: 95%;
 }
 .progress-line .spring-boot {
   width: 80%;
 }
 .progress-line .kotlin {
-  width: 60%;
+  width: 80%;
 }
 .progress-line .maven {
-  width: 90%;
+  width: 95%;
 }
 .progress-line .azure {
   width: 60%;
 }
 
 .progress-line .java::after {
-  content: "90%";
+  content: "95%";
 }
 .progress-line .spring-boot::after {
   content: "80%";
 }
 .progress-line .kotlin::after {
-  content: "60%";
+  content: "80%";
 }
 .progress-line .maven::after {
-  content: "90%";
+  content: "95%";
 }
 .progress-line .azure::after {
   content: "60%";
 }
 
 .progress-line .typescript {
-  width: 80%;
+  width: 95%;
 }
 .progress-line .angular {
-  width: 90%;
+  width: 80%;
 }
 .progress-line .react {
   width: 70%;
@@ -121,10 +121,10 @@
 }
 
 .progress-line .typescript::after {
-  content: "80%";
+  content: "95%";
 }
 .progress-line .angular::after {
-  content: "90%";
+  content: "80%";
 }
 .progress-line .react::after {
   content: "70%";
