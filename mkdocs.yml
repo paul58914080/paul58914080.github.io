@@ -74,7 +74,7 @@ extra_css:
   - stylesheets/custom.css
   - stylesheets/typography.css
 #  - stylesheets/main.min.css
-#  - stylesheets/custom.min.css
+  - stylesheets/custom.min.css
 
 nav:
   - About me: 'index.md'
