@@ -20,7 +20,7 @@ To list all installed and local Java versions, use:
 sdk list java | awk 'NR<=5 || tolower($0) ~ /installed|local only/'
 ```
 
-## Version switching
+### Version switching
 
 To use a specific Java version, use:
 ```shell
