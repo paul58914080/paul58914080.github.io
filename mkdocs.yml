@@ -97,6 +97,7 @@ nav:
       - Docker: 'pages/devops/docker/index.md'
       - Distroless images: 'pages/devops/distroless-images/index.md'
       - Github actions: 'pages/devops/github-actions/index.md'
+      - Maven central publish: 'pages/devops/maven-central-publish/index.md'
   - Mac:
       - Homebrew: 'pages/mac/homebrew/index.md'
   - Tools:
