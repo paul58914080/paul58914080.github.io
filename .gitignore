@@ -4,3 +4,5 @@ site
 
 *.drawio.bkp
 *.drawio.dtmp
+
+.venv
