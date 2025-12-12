@@ -5,7 +5,5 @@ description = "My personal website built with MkDocs and Material for MkDocs."
 readme = "README.md"
 requires-python = ">=3.14"
 dependencies = [
-    "mkdocs",
-    "mkdocs-material>=1.6.1",
-    "pymdown-extensions",
+    "zensical>=0.0.11",
 ]
