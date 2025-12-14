@@ -1,11 +1,3 @@
----
-date: 20-Feb-2025
-author: Paul WILLIAMS
-title: Hexagonal architecture
-description: >
-  A writeup on the hexagonal architecture.
----
-
 # Hexagonal architecture
 
 The first time I encountered and got inspired by the hexagonal architecture was when I saw a series (3 in total) of YouTube video by [Alistair COCKBURN](https://en.wikipedia.org/wiki/Alistair_Cockburn) and [Thomas PIERRAIN](https://github.com/tpierrain). Alistair was talking about the ports and adapters pattern, which is another name for the hexagonal architecture. I was amazed by the simplicity and the power of this architecture. It was a real eye-opener for me. I have been using this architecture ever since.

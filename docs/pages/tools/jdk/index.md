@@ -1,3 +1,5 @@
+# JDK (Java Development Kit)
+
 ## Install
 
 Install **Java** using [SDKMAN](../sdkman/index.md) with the following command:

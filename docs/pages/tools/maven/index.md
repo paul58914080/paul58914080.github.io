@@ -1,3 +1,5 @@
+# Maven
+
 ## Install
 
 Install **Maven** using [SDKMAN](../sdkman/index.md) with the following command:
