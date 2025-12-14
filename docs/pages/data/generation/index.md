@@ -1,3 +1,5 @@
+# Generation
+
 In the context of data pipeline "generation" usually refers to the stage where you produce or
 generate data. In software engineering we could refer to this as the golden source of data. This
 data could be categorized as structured, semi-structured, or unstructured.

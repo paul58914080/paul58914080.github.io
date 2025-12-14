@@ -1,3 +1,5 @@
+# Introduction to Data
+
 In today's digital landscape, data plays a crucial role in driving business decisions, enhancing
 customer experiences, and optimizing operations. It encompasses a wide range of information
 collected from various sources, including customer interactions, transactions, social media, and IoT

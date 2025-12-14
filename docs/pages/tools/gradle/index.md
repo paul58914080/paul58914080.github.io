@@ -1,3 +1,5 @@
+# Gradle
+
 ## Install
 
 Install **Gradle** using [SDKMAN](../sdkman/index.md) with the following command:

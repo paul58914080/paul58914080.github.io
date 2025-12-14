@@ -1,3 +1,5 @@
+# Scaffold Angular Application with Advanced Tooling
+
 [angular-cli](https://angular.io/cli) provides an amazing tooling for scaffolding, building, testing and deploying Angular applications. However, when you want to perform additional tasks like the following, the tooling is not enough:
 
 - Linting SCSS, HTML

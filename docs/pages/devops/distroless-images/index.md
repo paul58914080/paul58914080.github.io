@@ -1,3 +1,5 @@
+# Distroless Images
+
 Distroless images are minimal docker images that contain only your application and its runtime dependencies. They do not contain os, package managers, shells, or other tools that are typically included in a Linux distribution. This makes distroless images more secure and lightweight than traditional images.
 
 The name "**distroless**" comes from the fact that these images are "less" than a full Linux distribution. They are designed to be used as base images for containerized applications, providing a clean and secure environment for running your code.

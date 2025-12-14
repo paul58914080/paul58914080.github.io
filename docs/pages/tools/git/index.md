@@ -1,3 +1,5 @@
+# git
+
 ## Install
 
 Install **git** using [homebrew](../../mac/homebrew/index.md) with the following command:
