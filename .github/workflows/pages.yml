@@ -6,10 +6,10 @@ on:
     branches:
       - main
 permissions:
-  contents: write
-  pull-requests: write
-  pages: write
-  id-token: write
+  contents: write        # gh-pages + cleanup
+  pull-requests: write   # PR comments
+  pages: write           # deploy-pages
+  id-token: write        # required by deploy-pages
 jobs:
   build:
     if: github.event.action != 'closed'
@@ -58,42 +58,27 @@ jobs:
               body: `📘 **Site preview available**:\n\n${url}`
             });
 
+      - name: Upload Pages artifact
+        if: github.event_name == 'push'
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: site
+
   publish:
     if: github.event_name == 'push'
     runs-on: ubuntu-latest
     needs: build
     environment:
       name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
+      url: https://paulwilliams.dev
     steps:
-      - uses: actions/configure-pages@v5
-
-      - name: Checkout repository
-        uses: actions/checkout@v6
-
-      - name: "Set up Python"
-        uses: actions/setup-python@v6
-        with:
-          python-version-file: "pyproject.toml"
-
-      - name: Install uv
-        uses: astral-sh/setup-uv@v7
-
-      - name: Sync dependencies
-        run: uv sync
-
-      - name: Build site
-        run: uv run zensical build --clean
-
-      - uses: actions/upload-pages-artifact@v4
-        with:
-          path: site
-
-      - uses: actions/deploy-pages@v4
-        id: deployment
+      - name: Deploy to GitHub Pages
+        uses: actions/deploy-pages@v4
 
   cleanup:
-    if: github.event_name == 'pull_request' && github.event.action == 'closed'
+    if: github.event_name == 'pull_request' &&
+      github.event.action == 'closed' &&
+      github.event.pull_request.merged == false
     runs-on: ubuntu-latest
 
     steps:
