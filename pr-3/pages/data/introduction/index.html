@@ -1,0 +1,1637 @@
+<!-- Elements added to main will be displayed on all pages -->
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Personal, searchable notes on software development, tools, and productivity — concise guides, tips, and references.">
+      
+      
+        <meta name="author" content="Paul WILLIAMS">
+      
+      
+        <link rel="canonical" href="https://paulwilliams.dev/pages/data/introduction/">
+      
+      
+        <link rel="prev" href="../../craft/observability/">
+      
+      
+        <link rel="next" href="../generation/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="zensical-0.0.11">
+    
+    
+      
+        <title>Introduction to Data - Paul WILLIAMS</title>
+      
+    
+    
+      
+        
+      
+      <link rel="stylesheet" href="../../../assets/stylesheets/modern/main.bd6182e7.min.css">
+      
+        
+          
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/modern/palette.dfe2e883.min.css">
+      
+      
+  
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+  
+  <style>:root{}</style>
+
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter:300,300i,400,400i,500,500i,700,700i%7CJetBrains+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Inter";--md-code-font:"JetBrains Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../stylesheets/bootstrap-grid.min.css">
+    
+      <link rel="stylesheet" href="../../../stylesheets/skills.css">
+    
+      <link rel="stylesheet" href="../../../stylesheets/custom.css">
+    
+      <link rel="stylesheet" href="../../../stylesheets/typography.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,t)=>(e<<5)-e+t.charCodeAt(0)),0),__md_get=(e,t=localStorage,a=__md_scope)=>JSON.parse(t.getItem(a.pathname+"."+e)),__md_set=(e,t,a=localStorage,_=__md_scope)=>{try{a.setItem(_.pathname+"."+e,JSON.stringify(t))}catch(e){}},document.documentElement.setAttribute("data-platform",navigator.platform)</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#introduction-to-data" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="Paul WILLIAMS" class="md-header__button md-logo" aria-label="Paul WILLIAMS" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-book-open" viewBox="0 0 24 24"><path d="M12 7v14M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-menu" viewBox="0 0 24 24"><path d="M4 5h16M4 12h16M4 19h16"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Paul WILLIAMS
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Introduction to Data
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="none" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-hidden="true"  type="radio" name="__palette" id="__palette_0">
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-search" viewBox="0 0 24 24"><path d="m21 21-4.34-4.34"/><circle cx="11" cy="11" r="8"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog" aria-label="Search">
+  <button type="button" class="md-search__button">
+    Search
+  </button>
+</div>
+      
+    
+    <div class="md-header__source">
+      
+    </div>
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../.." class="md-tabs__link">
+        
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../craft/api-first/" class="md-tabs__link">
+          
+  
+  Craft
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="./" class="md-tabs__link">
+          
+  
+  Data
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../ai/github-copilot/" class="md-tabs__link">
+          
+  
+  AI
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../frontend/scaffold-angular/" class="md-tabs__link">
+          
+  
+  Frontend
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../backend/scaffold-hexagon-spring-boot/" class="md-tabs__link">
+          
+  
+  Backend
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../devops/docker/" class="md-tabs__link">
+          
+  
+  DevOps
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../mac/homebrew/" class="md-tabs__link">
+          
+  
+  Mac
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../tools/git/" class="md-tabs__link">
+          
+  
+  Tools
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../tips-and-tricks/beautify-terminal/" class="md-tabs__link">
+          
+  
+  Tips & Tricks
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Paul WILLIAMS" class="md-nav__button md-logo" aria-label="Paul WILLIAMS" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-book-open" viewBox="0 0 24 24"><path d="M12 7v14M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z"/></svg>
+
+    </a>
+    Paul WILLIAMS
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../craft/api-first/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Craft
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Data
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Data
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Introduction
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Introduction
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+
+<nav class="md-nav md-nav--secondary" aria-label="On this page">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      On this page
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#data-engineering" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Data engineering
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Data engineering">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#data-pipelines" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Data pipelines
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#data-science" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Data science
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#data-analytics" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Data analytics
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#big-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Big data
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Big data">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#volume" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Volume
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#variety" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Variety
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#velocity" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Velocity
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#veracity" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Veracity
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#value" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Value
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#data-governance" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Data governance
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#data-visualization" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Data visualization
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#data-ethics" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Data ethics
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#conclusion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Conclusion
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../generation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Generation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../ai/github-copilot/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    AI
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../frontend/scaffold-angular/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Frontend
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../backend/scaffold-hexagon-spring-boot/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Backend
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../devops/docker/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    DevOps
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../mac/homebrew/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Mac
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../tools/git/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tools
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../tips-and-tricks/beautify-terminal/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tips & Tricks
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--secondary" aria-label="On this page">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      On this page
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#data-engineering" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Data engineering
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Data engineering">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#data-pipelines" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Data pipelines
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#data-science" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Data science
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#data-analytics" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Data analytics
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#big-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Big data
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Big data">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#volume" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Volume
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#variety" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Variety
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#velocity" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Velocity
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#veracity" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Veracity
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#value" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Value
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#data-governance" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Data governance
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#data-visualization" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Data visualization
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#data-ethics" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Data ethics
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#conclusion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Conclusion
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+<h1 id="introduction-to-data">Introduction to Data<a class="headerlink" href="#introduction-to-data" title="Permanent link">&para;</a></h1>
+<p>In today's digital landscape, data plays a crucial role in driving business decisions, enhancing
+customer experiences, and optimizing operations. It encompasses a wide range of information
+collected from various sources, including customer interactions, transactions, social media, and IoT
+devices. The ability to effectively manage and analyze this data is essential for organizations to
+remain competitive and innovative.</p>
+<h2 id="data-engineering">Data engineering<a class="headerlink" href="#data-engineering" title="Permanent link">&para;</a></h2>
+<p>Data engineering is the discipline focused on designing, building, and maintaining the systems and
+infrastructure that enable the collection, storage, and processing of data. It involves creating
+data pipelines, ensuring data quality, and making data accessible for analysis. Data engineers work
+with various technologies such as databases, data warehouses, data lake, data lake house, and big
+data frameworks to ensure that data flows seamlessly through an organization.</p>
+<h3 id="data-pipelines">Data pipelines<a class="headerlink" href="#data-pipelines" title="Permanent link">&para;</a></h3>
+<p>Data pipelines are automated workflows that move data from one system to another, transforming it
+along the way. They are essential for ensuring that data is collected, processed, and made available
+for analysis in a timely manner. Data engineers design and implement these pipelines to handle large
+volumes of data efficiently, ensuring data integrity and consistency.</p>
+<p><img alt="Data pipeline" src="img/data-pipeline.svg" /></p>
+<ul>
+<li><strong>Generation</strong>: The systems or applications that generate data, such as web applications, IoT
+  devices, and sensors.</li>
+<li><strong>Ingestion</strong>: The process of collecting data from various sources, such as databases, APIs,
+  and files, and bringing it into the data pipeline.</li>
+<li><strong>Transformation</strong>: The process of cleaning, enriching, and transforming raw data into a
+  format suitable for analysis. This may involve filtering, aggregating, or joining data from
+  different sources.</li>
+<li><strong>Serving</strong>: The process of making transformed data available for analysis and
+  reporting. This may involve loading data into a data warehouse, data lake, or other storage
+  solutions.</li>
+<li><strong>Storage</strong>: The process of storing transformed data in a database, data warehouse,
+  or data lake, where it can be accessed for analysis. Data engineers choose the appropriate storage
+  solution based on the volume, variety, and velocity of the data.</li>
+<li><strong>Orchestration</strong>: The process of managing and scheduling the execution of data pipeline
+  tasks. This ensures that data flows smoothly through the pipeline and that dependencies between
+  tasks are handled correctly. Tools like Apache Airflow and Luigi are commonly used for data
+  orchestration.</li>
+<li><strong>Governance</strong>: The process of ensuring that data is managed according to organizational
+  policies and standards. This includes data security, privacy, and compliance with regulations.
+  Data engineers work closely with data governance teams to implement best practices for data
+  management.</li>
+<li><strong>Data monitoring</strong>: The process of tracking the performance and health of data pipelines.
+  This includes monitoring for errors, latency, and data quality issues. Data engineers implement
+  monitoring solutions to ensure that data pipelines run smoothly and efficiently.</li>
+<li><strong>Data lineage</strong>: The process of tracking the origin and transformations of data as it moves
+  through the pipeline. This helps organizations understand the flow of data, identify potential
+  issues, and ensure data quality. Data lineage tools provide visibility into how data is created,
+  transformed, and consumed within the organization.</li>
+<li><strong>Data quality</strong>: The process of ensuring that data is accurate, complete, and consistent.
+  Data engineers implement data validation and cleansing processes to maintain high data quality
+  standards. This includes identifying and resolving data anomalies, duplicates, and
+  inconsistencies.</li>
+<li><strong>Data security</strong>: The process of protecting data from unauthorized access, breaches, and
+  loss. Data engineers implement security measures such as encryption, access controls, and
+  monitoring to safeguard sensitive data. This is especially important in industries with strict
+  regulatory requirements.</li>
+<li><strong>DataOperations (DataOps)</strong>: DataOps is an agile approach to data management that emphasizes
+  collaboration, automation, and continuous improvement. It aims to streamline data workflows,
+  reduce time-to-insight, and enhance data quality. Data engineers play a key role in implementing
+  DataOps practices by automating data pipelines, monitoring data quality, and fostering collaboration
+  between data teams.</li>
+</ul>
+<h2 id="data-science">Data science<a class="headerlink" href="#data-science" title="Permanent link">&para;</a></h2>
+<p>Data science is the field that combines statistical analysis, machine learning, and domain expertise
+to extract insights and knowledge from data. Data scientists analyze complex datasets to identify
+patterns, make predictions, and inform decision-making. They use programming languages like Python
+and R, along with tools like Jupyter Notebooks and TensorFlow, to build models that can solve
+real-world problems.</p>
+<h2 id="data-analytics">Data analytics<a class="headerlink" href="#data-analytics" title="Permanent link">&para;</a></h2>
+<p>Data analytics involves examining datasets to draw conclusions and make informed decisions. It
+encompasses various techniques, including</p>
+<ul>
+<li>Descriptive analytics (summarizing past data)</li>
+<li>Diagnostic analytics (understanding why something happened)</li>
+<li>Predictive analytics (forecasting future trends)</li>
+<li>Prescriptive analytics (recommending actions)
+  Data analysts use tools like SQL, Excel, and visualization software to interpret data and
+  communicate findings effectively.</li>
+</ul>
+<h2 id="big-data">Big data<a class="headerlink" href="#big-data" title="Permanent link">&para;</a></h2>
+<p>Big data refers to extremely large and complex datasets that traditional data processing tools
+cannot handle efficiently. It is characterized by the "five V's": volume, variety, velocity,
+veracity, and value. Big data technologies, such as Hadoop and Spark, enable organizations to store,
+process, and analyze vast amounts of data in real-time, unlocking new opportunities for innovation
+and growth.</p>
+<p><img alt="5 v's of data" src="img/5-v-data.svg" /></p>
+<h3 id="volume">Volume<a class="headerlink" href="#volume" title="Permanent link">&para;</a></h3>
+<p>Volume refers to the sheer amount of data generated every second, from various sources like social
+media, sensors, and transactions. Organizations must have the infrastructure to store and manage
+this data effectively.</p>
+<h3 id="variety">Variety<a class="headerlink" href="#variety" title="Permanent link">&para;</a></h3>
+<p>Variety refers to the different types of data, including structured, semi-structured, and
+unstructured data. Organizations must be able to handle diverse data formats and sources to gain
+comprehensive insights.</p>
+<h3 id="velocity">Velocity<a class="headerlink" href="#velocity" title="Permanent link">&para;</a></h3>
+<p>Velocity is the speed at which data is generated and processed. Real-time data processing allows
+organizations to respond quickly to changing conditions and make timely decisions.</p>
+<h3 id="veracity">Veracity<a class="headerlink" href="#veracity" title="Permanent link">&para;</a></h3>
+<p>Veracity is the quality and reliability of data. Ensuring data accuracy and consistency is crucial
+for making informed decisions. Organizations must implement data validation and cleansing processes
+to maintain high data quality.</p>
+<h3 id="value">Value<a class="headerlink" href="#value" title="Permanent link">&para;</a></h3>
+<p>Value is the ultimate goal of data analysis. Organizations must extract meaningful insights from
+data to drive business value and create competitive advantages. This involves identifying key
+performance indicators (KPIs) and aligning data initiatives with business objectives.</p>
+<h2 id="data-governance">Data governance<a class="headerlink" href="#data-governance" title="Permanent link">&para;</a></h2>
+<p>Data governance is the framework that ensures data is managed effectively and responsibly within an
+organization. It involves establishing policies, standards, and procedures for data management,
+including data quality, security, privacy, and compliance. Effective data governance helps
+organizations maintain trust in their data, ensure regulatory compliance, and support data-driven
+decision-making.</p>
+<h2 id="data-visualization">Data visualization<a class="headerlink" href="#data-visualization" title="Permanent link">&para;</a></h2>
+<p>Data visualization is the graphical representation of data and information. It helps to communicate
+complex data insights in a clear and intuitive manner, making it easier for stakeholders to
+understand trends, patterns, and anomalies. Tools like Tableau, Power BI, and D3.js are commonly
+used to create interactive dashboards and visualizations that facilitate data exploration and
+storytelling.</p>
+<h2 id="data-ethics">Data ethics<a class="headerlink" href="#data-ethics" title="Permanent link">&para;</a></h2>
+<p>Data ethics refers to the moral principles and guidelines that govern the collection, use, and
+sharing of data. It addresses issues such as privacy, consent, bias, and transparency in data
+practices. Organizations must prioritize ethical considerations to build trust with customers and
+stakeholders while ensuring that data is used responsibly and for the greater good.</p>
+<h2 id="conclusion">Conclusion<a class="headerlink" href="#conclusion" title="Permanent link">&para;</a></h2>
+<p>Data is a valuable asset that drives innovation and growth in today's digital world. By
+understanding the various aspects of data, including data engineering, data science, data analytics,
+big data, data governance, data visualization, and data ethics, organizations can harness the power
+of data to make informed decisions and create meaningful impact. Embracing a data-driven culture is
+essential for staying competitive and meeting the evolving needs of customers and markets.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-circle-arrow-up" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="m16 12-4-4-4 4M12 16V8"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+<footer class="md-footer">
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <!-- Copyright and theme information -->
+      <div class="md-footer-copyright">
+        
+        <div class="md-footer-copyright__highlight">
+          Copyright &copy; 2026 Paul WILLIAMS. All rights reserved.
+
+        </div>
+        
+        Documented by Paul powered by
+        <a href="https://www.mkdocs.org" title="MkDocs">MkDocs</a>
+        and
+        <a href="https://zensical.org/"
+           title="Zensical">
+          Zensical</a>
+      </div>
+      
+      
+<div class="md-social">
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      
+      <script id="__config" type="application/json">{"annotate":null,"base":"../../..","features":["announce.dismiss","content.code.annotate","content.code.copy","content.code.select","content.footnote.tooltips","content.tabs.link","content.tooltips","navigation.footer","navigation.instant","navigation.instant.prefetch","navigation.prune","navigation.sections","navigation.tabs","navigation.tabs.sticky","navigation.top","navigation.tracking","search.highlight","toc.follow"],"search":"../../../assets/javascripts/workers/search.5df7522c.min.js","tags":null,"translations":{"clipboard.copied":"Copied to clipboard","clipboard.copy":"Copy to clipboard","search.result.more.one":"1 more on this page","search.result.more.other":"# more on this page","search.result.none":"No matching documents","search.result.one":"1 matching document","search.result.other":"# matching documents","search.result.placeholder":"Type to start searching","search.result.term.missing":"Missing","select.version":"Select version"},"version":null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.21aa498e.min.js"></script>
+      
+    
+  </body>
+</html>
