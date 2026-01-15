@@ -11,7 +11,8 @@ nav = [
     { "Home" = "index.md" },
     { "Craft" = [
         { "API Design" = "pages/craft/api-first/index.md" },
-        { "Hexagonal architecture" = "pages/craft/hexagonal-architecture/index.md" }
+        { "Hexagonal architecture" = "pages/craft/hexagonal-architecture/index.md" },
+        { "Observability" = "pages/craft/observability/index.md" }
     ] },
     { "Data" = [
         { "Introduction" = "pages/data/introduction/index.md" },
