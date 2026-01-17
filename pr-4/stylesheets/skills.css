@@ -1,0 +1,149 @@
+
+.skills-bar {
+  /*padding: 25px 30px;*/
+}
+
+.skills-bar .bar {
+  margin: 25px 0;
+}
+
+.skills-bar .bar .info span {
+  font-size: .8rem;
+  font-weight: 500;
+}
+
+.skills-bar .bar .info {
+  margin-bottom: 8px;
+  color: white;
+}
+
+.skills-bar .bar .progress-line {
+  position: relative;
+  height: 10px;
+  width: 550px;
+  background: #f0f0f0;
+  border-radius: 10px;
+  transform: scaleX(0);
+  transform-origin: left;
+  animation: animate 1s cubic-bezier(1, 0, 0.5, 1) forwards;
+}
+
+.bar .progress-line span {
+  position: absolute;
+  background: #25b79f;
+  height: 100%;
+  border-radius: 10px;
+  transform: scaleX(0);
+  transform-origin: left;
+  animation: animate 1s 1s cubic-bezier(1, 0, 0.5, 1) forwards;
+}
+
+@keyframes animate {
+  100% {
+    transform: scaleX(1);
+  }
+}
+
+
+
+.bar .progress-line span::before {
+  position: absolute;
+  content: "";
+  height: 0;
+  right: 0;
+  top: -14px;
+  width: 0;
+  border: 7px solid transparent;
+  border-bottom-width: 0px;
+  border-right-width: 0px;
+  border-top-style: #f0f0f0;
+  border-top-color: #07374a;
+}
+
+.bar .progress-line span::after {
+  position: absolute;
+  right: 0;
+  top: -28px;
+  color: #f0f0f0;
+  font-size: 12px;
+  font-weight: 700;
+  background: #07374a;
+  padding: 1px 8px;
+  border-radius: 3px;
+}
+
+.progress-line .java {
+  width: 95%;
+}
+.progress-line .spring-boot {
+  width: 80%;
+}
+.progress-line .kotlin {
+  width: 80%;
+}
+.progress-line .maven {
+  width: 95%;
+}
+.progress-line .azure {
+  width: 60%;
+}
+
+.progress-line .java::after {
+  content: "95%";
+}
+.progress-line .spring-boot::after {
+  content: "80%";
+}
+.progress-line .kotlin::after {
+  content: "80%";
+}
+.progress-line .maven::after {
+  content: "95%";
+}
+.progress-line .azure::after {
+  content: "60%";
+}
+
+.progress-line .typescript {
+  width: 95%;
+}
+.progress-line .angular {
+  width: 80%;
+}
+.progress-line .react {
+  width: 70%;
+}
+.progress-line .bootstrap {
+  width: 80%;
+}
+.progress-line .yarn {
+  width: 80%;
+}
+
+.progress-line .typescript::after {
+  content: "95%";
+}
+.progress-line .angular::after {
+  content: "80%";
+}
+.progress-line .react::after {
+  content: "70%";
+}
+.progress-line .bootstrap::after {
+  content: "80%";
+}
+.progress-line .yarn::after {
+  content: "80%";
+}
+
+/* ////........Media Query........//// */
+
+@media (max-width: 700px) {
+  .skills{
+    width: 80%;
+  }
+
+  .skills-bar .bar .progress-line{
+    width: 100%;
+  }
+}
