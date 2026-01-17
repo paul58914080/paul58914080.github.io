@@ -58,8 +58,8 @@ extra_css = ["stylesheets/bootstrap-grid.min.css", "stylesheets/skills.css", "st
 
 [project.theme]
 custom_dir = "docs/overrides"
-
-#favicon = "images/favicon.png"
+logo = "img/logo.svg"
+favicon = "img/logo.svg"
 language = "en"
 
 features = [
