@@ -309,3 +309,13 @@ ssh-keygen -t ed25519 -C "[EMAIL ID]"
 ## Cheat Sheet
 
 [Download Cheat Sheet](./downloads/git-cheat-sheet-education.pdf){:download="git-cheat-sheet-education.pdf"}
+
+## Delete local branches that have been merged
+
+```shell
+git branch --merged main | grep -v '^\*' | fzf -m | xargs -n 1 git branch -d
+```
+
+!!! info "Pre-requisite"
+
+    You will need to have [fzf](https://github.com/junegunn/fzf?tab=readme-ov-file#installation) installed for the above command to work.
