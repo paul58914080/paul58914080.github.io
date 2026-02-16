@@ -22,6 +22,10 @@ To list all installed and local Java versions, use:
 sdk list java | awk 'NR<=5 || tolower($0) ~ /installed|local only/'
 ```
 
+!!!info
+
+    The above command lists the first 5 lines of the output from `sdk list java` and then filters the remaining lines to show only those that contain "installed" or "local only", ignoring case. This way, you can see the available versions as well as the ones you have installed or are available locally.
+
 ### Version switching
 
 To use a specific Java version, use:
