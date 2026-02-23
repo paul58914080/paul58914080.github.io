@@ -19,18 +19,25 @@ In this article, we will see how to add these features to an Angular application
 - [Yarn](https://classic.yarnpkg.com/en/docs)
 - [Angular CLI](https://angular.io/cli)
 
-> At the time of this notes, angular was 17x, node LTS was 20x and yarn was 1.22x.
+!!! info
+
+    At the time of these notes, following were the latest versions of the above tools:
+    
+    - Angular was **21x**
+    - node LTS was **24x** 
+    - yarn was **1.22x**
+
 
 ## Scaffold base angular
 
 Generate the base Angular application with the following command:
 
 ```
-ng new [my-app] --package-manager=yarn --style=scss --routing=true --ssr=false
+ng new [my-app] --package-manager=yarn --style=scss --routing=true --ssr=false --prefix=[prefix] --strict=true
 ```
 
 ??? info "Read more"
-    More about this command in the [official documentation](https://angular.io/cli/new).
+    More about this command in the [official documentation](https://angular.dev/cli/new).
 
 ## Angular ESLint
 
@@ -160,7 +167,7 @@ Add the script in `package.json`:
 ```json title="package.json"
 {
   "scripts": {
-    "lint": "npm-p lint:ng lint:styles lint:html"
+    "lint": "run-p lint:ng lint:styles lint:html"
   }
 }
 ```
@@ -272,7 +279,7 @@ echo "yarn format:all" > .husky/pre-commit
 Update pre-push hooks with the following command:
 
 ```
-echo "yarn test" > .husky/pre-push 
+echo "yarn test --watch=false" > .husky/pre-push 
 ```
 
 Update commit-msg hooks with the following command:
