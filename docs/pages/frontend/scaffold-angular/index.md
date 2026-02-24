@@ -156,7 +156,7 @@ Add the script in `package.json`:
 
 ## Run all linters
 
-In order to run all linters we need a dependency npm-run-all. Add the following dependency to the project with the following command:
+In order to run all linters we need a dependency `npm-run-all`. Add the following dependency to the project with the following command:
 
 ```shell
 yarn add -D npm-run-all
@@ -177,7 +177,7 @@ Add the script in `package.json`:
 
 ## Format with Prettier
 
-Add Prettier dependencies to the project with the following command:
+Add `prettier` dependencies to the project with the following command:
 
 ```
 yarn add -D prettier
@@ -210,7 +210,7 @@ yarn.error.log
 
 ## Format staged files
 
-Add lint-staged dependency to the project with the following command:
+Add `lint-staged` dependency to the project with the following command:
 
 ```
 yarn add -D lint-staged
@@ -241,7 +241,7 @@ For formatting and linting together add the script in `package.json`:
 
 ## Commit message linting
 
-Add commitlint dependencies to the project with the following command:
+Add `commitlint` dependencies to the project with the following command:
 
 ```
 yarn add -D @commitlint/{config-conventional,cli}
@@ -258,7 +258,7 @@ module.exports = {extends: ['@commitlint/config-conventional']};
 
 ## Pre-commit hooks
 
-Add husky dependency to the project with the following command:
+Add `husky` dependency to the project with the following command:
 
 ```
 yarn add -D husky
@@ -293,9 +293,9 @@ echo "yarn commitlint --edit \$1" > .husky/commit-msg
 
 ## Mock server
 
-In this section you will basically create a mock server using json-server for the API requests and proxy the requests to the mock server.
+In this section you will basically create a mock server using `json-server` for the API requests and proxy the requests to the mock server.
 
-Add json-server dependency to the project with the following command:
+Add `json-server` dependency to the project with the following command:
 
 ```
 yarn add -D json-server
@@ -326,7 +326,7 @@ You might also want to proxy the API requests to the mock server. Add the follow
 }
 ```
 
-In the angular.json file, update the serve options to use the proxy configuration:
+In the `angular.json` file, update the serve options to use the proxy configuration:
 
 ```diff title="angular.json"
 {
@@ -349,7 +349,7 @@ In the angular.json file, update the serve options to use the proxy configuratio
 
 ## Translations
 
-Add ngx-translate dependencies to the project with the following command:
+Add `ngx-translate` dependencies to the project with the following command:
 
 ```
 yarn add @ngx-translate/core @ngx-translate/http-loader
@@ -363,69 +363,33 @@ We are using `ngx-translate/http-loader` to load translations from a JSON file. 
 }
 ```
 
-Update app.config.ts file with the following content:
+Update `app.config.ts` file with the following content:
 
 ```typescript title="src/app/app.config.ts"
-import { APP_INITIALIZER, ApplicationConfig, importProvidersFrom, Injector } from '@angular/core';
+import { ApplicationConfig } from '@angular/core';
 import { provideRouter } from '@angular/router';
 
 import { routes } from './app.routes';
-import { TranslateHttpLoader } from '@ngx-translate/http-loader';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
-import { TranslateLoader, TranslateModule, TranslateService } from '@ngx-translate/core';
-import { appInitializerFactory } from './appInitializerFactory';
-
-const httpLoaderFactory = (http: HttpClient): TranslateLoader => new TranslateHttpLoader(http);
+import {provideTranslateHttpLoader} from '@ngx-translate/http-loader';
+import {provideHttpClient} from '@angular/common/http';
+import {
+    provideTranslateService
+} from '@ngx-translate/core';
 
 export const appConfig: ApplicationConfig = {
-  providers: [
-    provideRouter(routes),
-    importProvidersFrom(HttpClientModule),
-    importProvidersFrom(
-      TranslateModule.forRoot({
-        loader: {
-          provide: TranslateLoader,
-          useFactory: httpLoaderFactory,
-          deps: [HttpClient],
-        },
-      }),
-    ),
-    {
-      provide: APP_INITIALIZER,
-      useFactory: appInitializerFactory,
-      deps: [TranslateService, Injector],
-      multi: true,
-    },
-  ],
+    providers: [
+        provideRouter(routes),
+        provideHttpClient(),
+        provideTranslateService({
+            loader: provideTranslateHttpLoader({
+                prefix: '/assets/i18n/',
+                suffix: '.json'
+            }),
+            fallbackLang: 'en',
+            lang: 'en'
+        })
+    ],
 };
-```
-
-Create appInitializerFactory.ts file with the following content:
-
-```typescript title="src/app/appInitializerFactory.ts"
-import {Injector} from '@angular/core';
-import {TranslateService} from '@ngx-translate/core';
-import {LOCATION_INITIALIZED} from '@angular/common';
-
-export const appInitializerFactory = (translate: TranslateService, injector: Injector) => () =>
-    new Promise((resolve) => {
-      const locationInitialized = injector.get(LOCATION_INITIALIZED, Promise.resolve(null));
-      locationInitialized.then(() => {
-        const langToSet = 'en'; // todo: this can be injected from a user service to get the user's preferred language
-        translate.setDefaultLang('en'); //todo: this can be injected from env variable
-        translate.use(langToSet).subscribe({
-          next: () => {
-            console.log(`Successfully initialized '${langToSet}' language.`); // todo: eplace this by a logger
-          },
-          error: (err) => {
-            console.error(`Problem with '${langToSet}' language initialization.`, err);
-          },
-          complete: () => {
-            resolve(null);
-          },
-        });
-      });
-    });
 ```
 
 ??? info "Read more"
@@ -449,48 +413,40 @@ Since we are using typescript, we can strictly type the environment variables wi
 
 ```typescript title="src/app/env.d.ts"
 interface ImportMeta {
-  readonly env: ImportMetaEnv;
-}
-
-interface ImportMetaEnv {
-  /**
-   * Built-in environment variable.
-   * @see Docs https://github.com/chihab/dotenv-run/packages/angular#node_env.
-   */
-  readonly NODE_ENV: string;
-  readonly NG_APP_DEFAULT_LANGUAGE: string;
-  // Add your environment variables below
-  // readonly NG_APP_API_URL: string;
-  [key: string]: any;
+    readonly env: {
+        readonly NODE_ENV: string;
+        readonly NG_APP_DEFAULT_LANGUAGE: string;
+    };
 }
 ```
 
 Now you should be able to access the environment variables in your application like so:
 
-```diff title="src/app/appInitializerFactory.ts"
-import { Injector } from '@angular/core';
-import { TranslateService } from '@ngx-translate/core';
-import { LOCATION_INITIALIZED } from '@angular/common';
+```typescript title="src/app/app.config.ts" hl_lines="20"
+import { ApplicationConfig, importProvidersFrom } from '@angular/core';
+import { provideRouter } from '@angular/router';
 
-export const appInitializerFactory = (translate: TranslateService, injector: Injector) => () =>
-  new Promise((resolve) => {
-    const locationInitialized = injector.get(LOCATION_INITIALIZED, Promise.resolve(null));
-    locationInitialized.then(() => {
-      const langToSet = 'en'; // todo: this can be injected from a user service to get the user's preferred language
-+     translate.setDefaultLang(import.meta.env.NG_APP_DEFAULT_LANGUAGE);
-      translate.use(langToSet).subscribe({
-        next: () => {
-          console.log(`Successfully initialized '${langToSet}' language.`);
-        },
-        error: (err) => {
-          console.error(`Problem with '${langToSet}' language initialization.`, err);
-        },
-        complete: () => {
-          resolve(null);
-        },
-      });
-    });
-  });
+import { routes } from './app.routes';
+import { provideTranslateHttpLoader } from '@ngx-translate/http-loader';
+import { provideHttpClient } from '@angular/common/http';
+import { provideTranslateService } from '@ngx-translate/core';
+import { LoggerModule, NgxLoggerLevel } from 'ngx-logger';
+
+export const appConfig: ApplicationConfig = {
+    providers: [
+        provideRouter(routes),
+        provideHttpClient(),
+        provideTranslateService({
+            loader: provideTranslateHttpLoader({
+                prefix: '/assets/i18n/',
+                suffix: '.json',
+            }),
+            fallbackLang: 'en',
+            lang: import.meta.env.NG_APP_DEFAULT_LANGUAGE || 'en',
+        }),
+        importProvidersFrom(LoggerModule.forRoot({ level: NgxLoggerLevel.INFO })),
+    ],
+};
 ```
 
 ??? info "Read more"
@@ -517,78 +473,39 @@ Update the start script in `package.json`:
 
 ## Logging
 
-Add ngx-logger dependencies to the project with the following command:
+Add `ngx-logger` dependencies to the project with the following command:
 
 ```
 yarn add ngx-logger
 ```
 
-Update app.config.ts file with the following content:
+Update `app.config.ts` file with the following content:
 
-```diff title="src/app/app.config.ts"
-import { APP_INITIALIZER, ApplicationConfig, importProvidersFrom, Injector } from '@angular/core';
+```typescript title="src/app/app.config.ts" hl_lines="22"
+import {ApplicationConfig, importProvidersFrom} from '@angular/core';
 import { provideRouter } from '@angular/router';
 
 import { routes } from './app.routes';
-import { TranslateHttpLoader } from '@ngx-translate/http-loader';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
-import { TranslateLoader, TranslateModule, TranslateService } from '@ngx-translate/core';
-import { appInitializerFactory } from './appInitializerFactory';
-+ import { LoggerModule, NGXLogger, NgxLoggerLevel } from 'ngx-logger';
-
-const httpLoaderFactory = (http: HttpClient): TranslateLoader => new TranslateHttpLoader(http);
+import { provideTranslateHttpLoader } from '@ngx-translate/http-loader';
+import { provideHttpClient } from '@angular/common/http';
+import { provideTranslateService } from '@ngx-translate/core';
+import {LoggerModule, NgxLoggerLevel} from "ngx-logger";
 
 export const appConfig: ApplicationConfig = {
   providers: [
     provideRouter(routes),
-    importProvidersFrom(HttpClientModule),
-    importProvidersFrom(
-      TranslateModule.forRoot({
-        loader: {
-          provide: TranslateLoader,
-          useFactory: httpLoaderFactory,
-          deps: [HttpClient],
-        },
+    provideHttpClient(),
+    provideTranslateService({
+      loader: provideTranslateHttpLoader({
+        prefix: '/assets/i18n/',
+        suffix: '.json',
       }),
-    ),
-    {
-      provide: APP_INITIALIZER,
-      useFactory: appInitializerFactory,
-+     deps: [TranslateService, Injector, NGXLogger],
-      multi: true,
-    },
-+   importProvidersFrom(LoggerModule.forRoot( { level: NgxLoggerLevel.DEBUG}))
+      fallbackLang: 'en',
+      lang: 'en',
+    }),
+    importProvidersFrom(LoggerModule.forRoot({ level: NgxLoggerLevel.INFO})),
   ],
 };
-```
-
-Update appInitializerFactory.ts file with the following content:
-
-```diff title="src/app/appInitializerFactory.ts"
-import { Injector } from '@angular/core';
-import { TranslateService } from '@ngx-translate/core';
-import { LOCATION_INITIALIZED } from '@angular/common';
-+ import { NGXLogger } from 'ngx-logger';
-
-export const appInitializerFactory = (translate: TranslateService, injector: Injector, logger: NGXLogger) => () =>
-  new Promise((resolve) => {
-    const locationInitialized = injector.get(LOCATION_INITIALIZED, Promise.resolve(null));
-    locationInitialized.then(() => {
-      const langToSet = 'en'; // todo: this can be injected from a user service to get the user's preferred language
-      translate.setDefaultLang(import.meta.env.NG_APP_DEFAULT_LANGUAGE);
-      translate.use(langToSet).subscribe({
-        next: () => {
-+         logger.info(`Successfully initialized '${langToSet}' language.`);
-        },
-        error: (err) => {
-+         logger.error(`Problem with '${langToSet}' language initialization.`, err);
-        },
-        complete: () => {
-          resolve(null);
-        },
-      });
-    });
-  });
 ```
 
 ??? info "Read more"
