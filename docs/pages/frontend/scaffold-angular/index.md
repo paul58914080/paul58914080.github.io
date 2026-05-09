@@ -328,14 +328,14 @@ You might also want to proxy the API requests to the mock server. Add the follow
 
 In the `angular.json` file, update the serve options to use the proxy configuration:
 
-```diff title="angular.json"
+```json title="angular.json" hl_lines="5-9"
 {
   "projects": {
     "[my-app]": {
       "architect": {
         "serve": {
           "options": {
-+           "proxyConfig": "proxy.conf.json"
+            "proxyConfig": "proxy.conf.json"
           }
         }
       }
@@ -355,9 +355,9 @@ Add `ngx-translate` dependencies to the project with the following command:
 yarn add @ngx-translate/core @ngx-translate/http-loader
 ```
 
-We are using `ngx-translate/http-loader` to load translations from a JSON file. Create a `src/assets/i18n/en.json` file with the following content:
+We are using `ngx-translate/http-loader` to load translations from a JSON file. Create a `public/assets/i18n/en.json` file with the following content:
 
-```json title="src/assets/i18n/en.json"
+```json title="public/assets/i18n/en.json"
 {
   "HELLO": "Hello World!"
 }
@@ -365,31 +365,34 @@ We are using `ngx-translate/http-loader` to load translations from a JSON file. 
 
 Update `app.config.ts` file with the following content:
 
-```typescript title="src/app/app.config.ts"
-import { ApplicationConfig } from '@angular/core';
-import { provideRouter } from '@angular/router';
-
-import { routes } from './app.routes';
-import {provideTranslateHttpLoader} from '@ngx-translate/http-loader';
-import {provideHttpClient} from '@angular/common/http';
+```typescript title="src/app/app.config.ts" hl_lines="8-10 17-24" linenums="1"
 import {
-    provideTranslateService
-} from '@ngx-translate/core';
+  ApplicationConfig,
+  provideBrowserGlobalErrorListeners,
+} from "@angular/core";
+import { provideRouter } from "@angular/router";
+
+import { routes } from "./app.routes";
+import { provideTranslateHttpLoader } from "@ngx-translate/http-loader";
+import { provideHttpClient } from "@angular/common/http";
+import { provideTranslateService } from "@ngx-translate/core";
 
 export const appConfig: ApplicationConfig = {
-    providers: [
-        provideRouter(routes),
-        provideHttpClient(),
-        provideTranslateService({
-            loader: provideTranslateHttpLoader({
-                prefix: '/assets/i18n/',
-                suffix: '.json'
-            }),
-            fallbackLang: 'en',
-            lang: 'en'
-        })
-    ],
+  providers: [
+    provideBrowserGlobalErrorListeners(),
+    provideRouter(routes),
+    provideHttpClient(),
+    provideTranslateService({
+      loader: provideTranslateHttpLoader({
+        prefix: "/assets/i18n/",
+        suffix: ".json",
+      }),
+      fallbackLang: "en",
+      lang: "en",
+    })
+  ],
 };
+
 ```
 
 ??? info "Read more"
@@ -481,29 +484,34 @@ yarn add ngx-logger
 
 Update `app.config.ts` file with the following content:
 
-```typescript title="src/app/app.config.ts" hl_lines="22"
-import {ApplicationConfig, importProvidersFrom} from '@angular/core';
-import { provideRouter } from '@angular/router';
+```typescript title="src/app/app.config.ts" hl_lines="12 27" linenums="1"
+import {
+  ApplicationConfig,
+  importProvidersFrom,
+  provideBrowserGlobalErrorListeners,
+} from "@angular/core";
+import { provideRouter } from "@angular/router";
 
-import { routes } from './app.routes';
-import { provideTranslateHttpLoader } from '@ngx-translate/http-loader';
-import { provideHttpClient } from '@angular/common/http';
-import { provideTranslateService } from '@ngx-translate/core';
-import {LoggerModule, NgxLoggerLevel} from "ngx-logger";
+import { routes } from "./app.routes";
+import { provideTranslateHttpLoader } from "@ngx-translate/http-loader";
+import { provideHttpClient } from "@angular/common/http";
+import { provideTranslateService } from "@ngx-translate/core";
+import { LoggerModule, NgxLoggerLevel } from "ngx-logger";
 
 export const appConfig: ApplicationConfig = {
   providers: [
+    provideBrowserGlobalErrorListeners(),
     provideRouter(routes),
     provideHttpClient(),
     provideTranslateService({
       loader: provideTranslateHttpLoader({
-        prefix: '/assets/i18n/',
-        suffix: '.json',
+        prefix: "/assets/i18n/",
+        suffix: ".json",
       }),
-      fallbackLang: 'en',
-      lang: 'en',
+      fallbackLang: "en",
+      lang: import.meta.env.NG_APP_DEFAULT_LANGUAGE || "en",
     }),
-    importProvidersFrom(LoggerModule.forRoot({ level: NgxLoggerLevel.INFO})),
+    importProvidersFrom(LoggerModule.forRoot({ level: NgxLoggerLevel.INFO })),
   ],
 };
 ```
