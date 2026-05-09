@@ -10,6 +10,10 @@ Quick Actions are custom automations you can add to the macOS Finder's right-cli
 
 ## Open a Folder in VSCode or IntelliJ
 
+<figure markdown="1">
+![Open in VSCode](img/open-in-vscode.png)
+</figure>
+
 ### Step 1 – Open Automator
 
 1. Press `Cmd + Space` to open Spotlight.
