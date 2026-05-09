@@ -37,7 +37,8 @@ nav = [
         { "Maven central publish" = "pages/devops/maven-central-publish/index.md" }
     ] },
     { "Mac" = [
-        { "Homebrew" = "pages/mac/homebrew/index.md" }
+        { "Homebrew" = "pages/mac/homebrew/index.md" },
+        { "Quick Actions" = "pages/mac/quick-actions/index.md" }
     ] },
     { "Tools" = [
         { "Git" = "pages/tools/git/index.md" },
