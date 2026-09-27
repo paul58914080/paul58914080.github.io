@@ -62,7 +62,6 @@ custom_dir = "docs/overrides"
 logo = "img/logo.svg"
 favicon = "img/logo.svg"
 language = "en"
-
 features = [
     "announce.dismiss",
     "content.code.annotate",
@@ -84,7 +83,11 @@ features = [
     "toc.follow"
 ]
 
+[project.theme.font]
+text = "Geist"
+code = "Geist Mono"
+
 [[project.theme.palette]]
 scheme = "slate"
-
-
+primary = "custom"
+accent = "custom"
