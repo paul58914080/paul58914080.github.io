@@ -1,1 +1,64 @@
-.md-header__source{display: none;}
+.md-header__source { display: none; }
+
+/* Agent-native inspired dark theme — near-black bg, warm off-white text, cyan accent */
+[data-md-color-scheme="slate"] {
+  /* Backgrounds */
+  --md-default-bg-color: #0a0a0a;
+  --md-default-bg-color--light: #0f0f0f;
+  --md-default-bg-color--lighter: #1a1a1a;
+  --md-default-bg-color--lightest: #2e2e2e;
+
+  /* Text */
+  --md-default-fg-color: #faf9f5;
+  --md-default-fg-color--light: #aeadac;
+  --md-default-fg-color--lighter: #5e5e5e;
+  --md-default-fg-color--lightest: rgba(250, 249, 245, 0.12);
+
+  /* Primary (header, nav bar) */
+  --md-primary-fg-color: #0f0f0f;
+  --md-primary-fg-color--light: #1a1a1a;
+  --md-primary-fg-color--dark: #000000;
+  --md-primary-bg-color: #faf9f5;
+  --md-primary-bg-color--light: #aeadac;
+
+  /* Accent (links, active states, highlights) */
+  --md-accent-fg-color: #01c8f1;
+  --md-accent-fg-color--transparent: rgba(1, 200, 241, 0.1);
+  --md-accent-bg-color: #0a0a0a;
+  --md-accent-bg-color--light: #0f0f0f;
+
+  /* Typeset links */
+  --md-typeset-a-color: #bef0f5;
+
+  /* Code blocks */
+  --md-code-bg-color: #0f0f0f;
+  --md-code-fg-color: #e0e0d7;
+  --md-code-hl-color: rgba(1, 200, 241, 0.15);
+  --md-code-hl-number-color: #dec75f;
+  --md-code-hl-special-color: #fa9bf2;
+  --md-code-hl-function-color: #00dff6;
+  --md-code-hl-constant-color: #0fdfba;
+  --md-code-hl-keyword-color: #bef0f5;
+  --md-code-hl-string-color: #0fdfba;
+  --md-code-hl-name-color: #faf9f5;
+  --md-code-hl-operator-color: #aeadac;
+  --md-code-hl-punctuation-color: #aeadac;
+  --md-code-hl-comment-color: #5e5e5e;
+  --md-code-hl-generic-color: #aeadac;
+  --md-code-hl-variable-color: #bef0f5;
+
+  /* Footer */
+  --md-footer-bg-color: #0a0a0a;
+  --md-footer-bg-color--dark: #000000;
+  --md-footer-fg-color: #aeadac;
+  --md-footer-fg-color--light: #5e5e5e;
+  --md-footer-fg-color--lighter: #3d3d3d;
+
+  /* Admonitions */
+  --md-admonition-bg-color: #0f0f0f;
+
+  /* Shadow */
+  --md-shadow-z1: 0 0 0.2rem rgba(0, 0, 0, 0.4), 0 0.2rem 0.4rem rgba(0, 0, 0, 0.4);
+  --md-shadow-z2: 0 0 0.2rem rgba(0, 0, 0, 0.5), 0 0.2rem 0.4rem rgba(0, 0, 0, 0.5);
+  --md-shadow-z3: 0 0 0.2rem rgba(0, 0, 0, 0.6), 0 0.4rem 1rem rgba(0, 0, 0, 0.6);
+}
