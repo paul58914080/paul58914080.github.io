@@ -3,17 +3,21 @@
 {{ super() }}
 
 <style>
-  /* ── Kill page scroll on Home ─────────────────────────── */
-  html, body { overflow: hidden !important; height: 100%; }
+  /* ── Base (mobile-first): content flows and may scroll ── */
   .md-main, .md-main__inner, .md-content, .md-content__inner { overflow: visible !important; }
   .md-content__inner:before { display: none; } /* removes MkDocs' top spacer */
 
-  /* ── Page: one screen, no scroll ─────────────────────── */
   .profile-page {
     display: flex;
     flex-direction: column;
-    overflow: hidden;
     background: #0a0a0a;
+    overflow: hidden;                 /* clips decorative grids, not content */
+  }
+
+  /* ── Large screens only: lock to one elegant screen ───── */
+  @media (min-width: 900px) and (min-height: 720px) {
+    html, body { overflow: hidden; height: 100%; }
+    .profile-page { height: 100vh; }  /* JS refines to the exact fit */
   }
 
   /* ── Hero — 40% ───────────────────────────────────────── */
@@ -26,14 +30,6 @@
     overflow: hidden;
     background: #080808;
     border-bottom: 1px solid #1a1a1a;
-  }
-
-  #hero-canvas {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    pointer-events: none;
   }
 
   .profile-hero::before {
@@ -53,9 +49,14 @@
     z-index: 2;
     text-align: center;
     padding: 0 32px;
-    max-width: 900px;
+    max-width: 1080px;
     width: 100%;
   }
+
+  /* hero already paints a grid — hide the diagram's own, add spacing */
+  .profile-hero .skills-diagram { margin: 4px 0 28px; }
+  .profile-hero .skills-diagram::before { display: none; }
+  .profile-hero .profile-title { margin-bottom: 8px; }
 
   /* beats .md-typeset h1 specificity */
   .profile-hero .profile-title {
@@ -136,48 +137,150 @@
   }
 
   .profile-section-label {
-    font-size: 11px;
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    font-size: 16px;
     font-weight: 600;
-    letter-spacing: 0.1em;
+    letter-spacing: 0.06em;
     text-transform: uppercase;
-    color: #5e5e5e;
-    margin: 0 0 16px;
+    color: #8a8a88;
+    margin: 0 0 18px;
   }
+  .profile-section-label svg { width: 18px; height: 18px; flex: none; }
 
-  /* ── Skill cards ──────────────────────────────────────── */
-  .profile-skills-grid {
+  /* ── Skills diagram (nodes → central card) ────────────── */
+  .skills-diagram {
+    position: relative;
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 12px;
+    grid-template-columns: 1fr minmax(380px, 500px) 1fr;
+    grid-template-rows: auto auto;
+    align-items: center;
+    row-gap: 30px;
+    padding: 20px 0;
   }
+  .skills-diagram::before {
+    content: '';
+    position: absolute;
+    inset: -20px -16px;
+    background-image:
+      linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+    background-size: 64px 64px;
+    pointer-events: none;
+    z-index: 0;
+  }
+  .skills-diagram > * { position: relative; z-index: 1; }
 
-  .profile-skill-card {
+  /* ── Nodes ── */
+  .skill-node { display: flex; align-items: center; gap: 14px; min-width: 0; }
+  .skill-node__text { min-width: 0; }
+  .skill-node--left  { justify-content: flex-end; }
+  .skill-node--right { justify-content: flex-start; }
+  .pos-tl { grid-column: 1; grid-row: 1; }
+  .pos-bl { grid-column: 1; grid-row: 2; }
+  .pos-tr { grid-column: 3; grid-row: 1; }
+  .pos-br { grid-column: 3; grid-row: 2; }
+
+  .skill-node__box {
+    display: flex; align-items: center; justify-content: center;
+    width: 52px; height: 52px; flex: none;
+    border-radius: 12px;
     background: #0f0f0f;
-    border: 1px solid #1a1a1a;
-    border-radius: 8px;
-    padding: 18px 18px 14px;
+    border: 1px solid #262626;
+    color: #d0d0ce;
+  }
+  .skill-node__box svg { width: 22px; height: 22px; }
+
+  .skill-node__text { display: flex; flex-direction: column; }
+  .skill-node--left  .skill-node__text { align-items: flex-end;   text-align: right; }
+  .skill-node--right .skill-node__text { align-items: flex-start; text-align: left; }
+
+  .skill-node__title {
+    font-size: 18px; font-weight: 600; letter-spacing: -0.01em; color: #f2f2f0;
+    line-height: 1.2;
+  }
+  .skill-node__tags {
+    font-size: 12px; color: #6f6f6d; margin-top: 5px; letter-spacing: 0.02em;
+    line-height: 1.55;
   }
 
-  .profile-skill-card__title {
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: #5e5e5e;
-    margin: 0 0 12px;
+  /* dotted connectors toward the card */
+  .skill-node__wire {
+    flex: 1; min-width: 26px; height: 0;
+    border-top: 1.5px dotted #3a3a3a;
+    margin: 0 2px; position: relative;
+  }
+  .skill-node__wire::before {
+    content: ''; position: absolute; top: 50%; width: 5px; height: 5px;
+    border-radius: 50%; background: #4a4a4a; transform: translateY(-50%);
+  }
+  .skill-node--left  .skill-node__wire::before { right: -1px; }
+  .skill-node--right .skill-node__wire::before { left: -1px; }
+
+  /* ── Central card ── */
+  .skills-card {
+    grid-column: 2; grid-row: 1 / span 2;
+    align-self: center;
+    min-width: 0;
+    background: #0d0d0d;
+    border: 1px solid #262626;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 24px 60px rgba(0,0,0,0.55);
+  }
+  .skills-card__bar {
+    display: flex; align-items: center; gap: 10px;
+    padding: 13px 18px; border-bottom: 1px solid #1c1c1c;
+    font-size: 14px; color: #8a8a88;
+  }
+  .skills-card__bar svg { width: 16px; height: 16px; opacity: 0.7; }
+  .skills-card__code {
+    margin: 0; padding: 22px 24px;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    font-size: 17px; line-height: 1.85; color: #d4d4d2;
+    white-space: pre; overflow-x: auto;
+    text-align: start;
+  }
+  .tok-kw  { color: #c792ea; }
+  .tok-fn  { color: #82aaff; }
+  .tok-str { color: #c3e88d; }
+  .tok-num { color: #f78c6c; }
+  .tok-key { color: #f07178; }
+
+  /* Tablet / small laptop: stack the diagram, add hero breathing room */
+  @media (max-width: 900px) {
+    .skills-diagram {
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: none;
+      row-gap: 16px; column-gap: 16px;
+    }
+    .skills-card { grid-column: 1 / -1; grid-row: auto; margin-bottom: 4px; }
+    .pos-tl, .pos-bl, .pos-tr, .pos-br { grid-column: auto; grid-row: auto; }
+    .skill-node { justify-content: flex-start; }
+    .skill-node--left .skill-node__text { align-items: flex-start; text-align: left; }
+    .skill-node--left  { flex-direction: row-reverse; justify-content: flex-end; }
+    .skill-node__wire { display: none; }
+
+    .profile-hero { padding: 48px 0 60px; }
+    .profile-hero__inner { padding: 0 20px; }
+    .profile-hero .skills-diagram { margin: 4px 0 24px; }
+    .profile-ctas { margin-top: 6px; }
   }
 
-  .profile-tags { display: flex; flex-wrap: wrap; gap: 6px; }
-
-  .profile-tag {
-    font-size: 12px;
-    font-weight: 500;
-    padding: 3px 10px;
-    border-radius: 9999px;
-    background: #1a1a1a;
-    color: #aeadac;
-    border: 1px solid #2e2e2e;
-    white-space: nowrap;
+  /* Phones: single column everywhere, smaller code */
+  @media (max-width: 640px) {
+    .skills-diagram { grid-template-columns: 1fr; }
+    .profile-oss-grid { grid-template-columns: 1fr; }
+    .profile-section { padding: 32px 0; }
+    .profile-hero { padding: 40px 0 52px; }
+    .skills-card__code { font-size: 14px; padding: 16px 18px; }
+    .skills-card__bar  { font-size: 13px; }
+    .skill-node__box { width: 46px; height: 46px; }
+    .skill-node__box svg { width: 20px; height: 20px; }
+    .skill-node__title { font-size: 16px; }
+    .skill-node__tags { font-size: 11.5px; }
   }
 
   /* ── OSS cards ────────────────────────────────────────── */
@@ -217,14 +320,71 @@
 
   <!-- Hero -->
   <section class="profile-hero">
-    <canvas id="hero-canvas"></canvas>
-    <div class="profile-hero__inner md-typeset">
-      <h1 class="profile-title">Paul Williams</h1>
-      <p class="profile-bio">
-        TOGAF® Certified Architect with 17 years of experience delivering enterprise-scale
-        architecture solutions in global financial services. Specialising in hexagonal architecture,
-        microservices, and cloud-native systems.
-      </p>
+    <div class="profile-hero__inner">
+      <div class="skills-diagram">
+
+        <!-- Left nodes -->
+        <div class="skill-node skill-node--left pos-tl">
+          <div class="skill-node__text">
+            <span class="skill-node__title">Backend</span>
+            <span class="skill-node__tags">Java · Spring Boot · Kotlin · Maven</span>
+          </div>
+          <div class="skill-node__box">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><rect x="3" y="4" width="18" height="7" rx="1.5"/><rect x="3" y="13" width="18" height="7" rx="1.5"/><circle cx="7" cy="7.5" r="0.7" fill="currentColor" stroke="none"/><circle cx="7" cy="16.5" r="0.7" fill="currentColor" stroke="none"/></svg>
+          </div>
+          <span class="skill-node__wire"></span>
+        </div>
+
+        <div class="skill-node skill-node--left pos-bl">
+          <div class="skill-node__text">
+            <span class="skill-node__title">Frontend</span>
+            <span class="skill-node__tags">TypeScript · Angular · React · Bootstrap</span>
+          </div>
+          <div class="skill-node__box">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 9h18"/><circle cx="6" cy="7" r="0.6" fill="currentColor" stroke="none"/><circle cx="8.4" cy="7" r="0.6" fill="currentColor" stroke="none"/></svg>
+          </div>
+          <span class="skill-node__wire"></span>
+        </div>
+
+        <!-- Central card -->
+        <div class="skills-card">
+          <div class="skills-card__bar">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5"/></svg>
+            profile.ts
+          </div>
+<pre class="skills-card__code"><span class="tok-kw">export default</span> <span class="tok-fn">defineArchitect</span>({
+  name: <span class="tok-str">"Paul Williams"</span>,
+  certified: <span class="tok-str">"TOGAF®"</span>,
+  experience: <span class="tok-num">17</span>,
+  focus: [<span class="tok-str">"Modernization"</span>, <span class="tok-str">"AI"</span>],
+})</pre>
+        </div>
+
+        <!-- Right nodes -->
+        <div class="skill-node skill-node--right pos-tr">
+          <span class="skill-node__wire"></span>
+          <div class="skill-node__box">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"><path d="M7 18h9a4 4 0 0 0 .5-7.97 5.5 5.5 0 0 0-10.6-1.2A3.75 3.75 0 0 0 6 18z"/></svg>
+          </div>
+          <div class="skill-node__text">
+            <span class="skill-node__title">Cloud &amp; DevOps</span>
+            <span class="skill-node__tags">Azure · Docker · GitHub Actions</span>
+          </div>
+        </div>
+
+        <div class="skill-node skill-node--right pos-br">
+          <span class="skill-node__wire"></span>
+          <div class="skill-node__box">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"><path d="M12 3 3 8l9 5 9-5-9-5z"/><path d="M3 13l9 5 9-5"/></svg>
+          </div>
+          <div class="skill-node__text">
+            <span class="skill-node__title">Architecture</span>
+            <span class="skill-node__tags">TOGAF® · API Design · DDD</span>
+          </div>
+        </div>
+
+      </div>
+
       <div class="profile-ctas">
         <a class="profile-btn profile-btn--primary" href="https://github.com/paul58914080" target="_blank">
           <img src="img/github.svg" alt=""> GitHub
@@ -236,94 +396,13 @@
     </div>
   </section>
 
-  <script>
-  (function () {
-    const canvas = document.getElementById('hero-canvas');
-    const ctx = canvas.getContext('2d');
-    function draw() {
-      const W = canvas.width  = canvas.offsetWidth;
-      const H = canvas.height = canvas.offsetHeight;
-      ctx.clearRect(0, 0, W, H);
-      const n = Math.floor(W * H / 4000);
-      for (let i = 0; i < n; i++) {
-        ctx.beginPath();
-        ctx.arc(Math.random()*W, Math.random()*H, Math.random()*1.1, 0, Math.PI*2);
-        ctx.fillStyle = `rgba(250,249,245,${Math.random()*0.45+0.08})`;
-        ctx.fill();
-      }
-      const cols=40,rows=14,cellW=W/cols,cellH=H*0.02,amp=H*0.055,oy=H*0.75;
-      function my(c,r){return oy+r*cellH-Math.sin(c*0.38)*Math.cos(r*0.55)*amp-Math.sin(c*0.15+r*0.4)*amp*0.4;}
-      ctx.lineWidth=0.5;
-      for(let r=0;r<rows;r++){
-        ctx.strokeStyle=`rgba(200,220,230,${0.07*(1-r/rows)})`;
-        ctx.beginPath();
-        for(let c=0;c<=cols;c++){const x=c*cellW,y=my(c,r);c===0?ctx.moveTo(x,y):ctx.lineTo(x,y);}
-        ctx.stroke();
-      }
-      for(let c=0;c<=cols;c++){
-        ctx.strokeStyle=`rgba(200,220,230,${0.04*(1-Math.abs(c-cols/2)/(cols/2))})`;
-        ctx.beginPath();
-        for(let r=0;r<rows;r++){const x=c*cellW,y=my(c,r);r===0?ctx.moveTo(x,y):ctx.lineTo(x,y);}
-        ctx.stroke();
-      }
-      const g=ctx.createRadialGradient(W/2,H*0.7,0,W/2,H*0.7,W*0.45);
-      g.addColorStop(0,'rgba(40,60,70,0.5)');g.addColorStop(0.5,'rgba(15,25,30,0.25)');g.addColorStop(1,'rgba(8,8,8,0)');
-      ctx.fillStyle=g;ctx.fillRect(0,0,W,H);
-    }
-    draw();
-    window.addEventListener('resize', draw);
-  })();
-  </script>
-
-  <!-- Skills — no md-typeset, no inherited paragraph margins -->
-  <section class="profile-section">
-    <div class="profile-section__inner">
-      <div class="profile-section-label">Skills &amp; Expertise</div>
-      <div class="profile-skills-grid">
-        <div class="profile-skill-card">
-          <div class="profile-skill-card__title">Backend</div>
-          <div class="profile-tags">
-            <span class="profile-tag">Java</span>
-            <span class="profile-tag">Spring Boot</span>
-            <span class="profile-tag">Kotlin</span>
-            <span class="profile-tag">Maven</span>
-          </div>
-        </div>
-        <div class="profile-skill-card">
-          <div class="profile-skill-card__title">Frontend</div>
-          <div class="profile-tags">
-            <span class="profile-tag">TypeScript</span>
-            <span class="profile-tag">Angular</span>
-            <span class="profile-tag">React</span>
-            <span class="profile-tag">Bootstrap</span>
-          </div>
-        </div>
-        <div class="profile-skill-card">
-          <div class="profile-skill-card__title">Cloud &amp; DevOps</div>
-          <div class="profile-tags">
-            <span class="profile-tag">Azure</span>
-            <span class="profile-tag">Docker</span>
-            <span class="profile-tag">GitHub Actions</span>
-            <span class="profile-tag">Microservices</span>
-          </div>
-        </div>
-        <div class="profile-skill-card">
-          <div class="profile-skill-card__title">Architecture</div>
-          <div class="profile-tags">
-            <span class="profile-tag">TOGAF®</span>
-            <span class="profile-tag">Enterprise Architecture</span>
-            <span class="profile-tag">API Design</span>
-            <span class="profile-tag">DDD</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
   <!-- Open Source — no md-typeset -->
   <section class="profile-section">
     <div class="profile-section__inner">
-      <div class="profile-section-label">Open Source Contributions</div>
+      <div class="profile-section-label">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="6" r="2.5"/><circle cx="6" cy="18" r="2.5"/><circle cx="18" cy="7" r="2.5"/><path d="M6 8.5v7"/><path d="M18 9.5c0 4-5 3.5-5 7.5"/></svg>
+        Open Source Contributions
+      </div>
       <div class="profile-oss-grid">
         <a class="profile-oss-card" href="https://github.com/ff4j/ff4j-spring-boot-starter-parent" target="_blank">
           <div class="profile-oss-card__title">Feature Flipping for Java</div>
@@ -342,12 +421,18 @@
 <script>
 (function () {
   var page = document.querySelector('.profile-page');
+  var mq = window.matchMedia('(min-width: 900px) and (min-height: 720px)');
   function fit() {
-    var top = page.getBoundingClientRect().top + window.scrollY;
-    page.style.height = (window.innerHeight - top) + 'px';
+    if (mq.matches) {
+      var top = page.getBoundingClientRect().top + window.scrollY;
+      page.style.height = (window.innerHeight - top) + 'px';
+    } else {
+      page.style.height = '';   /* let content define height, allow scroll */
+    }
   }
   fit();
   window.addEventListener('resize', fit);
+  window.addEventListener('orientationchange', fit);
 })();
 </script>
 
