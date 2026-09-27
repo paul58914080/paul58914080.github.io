@@ -3,193 +3,353 @@
 {{ super() }}
 
 <style>
-  .home-header {
-    padding-top: 3rem;
-    /*background: var(--md-primary-fg-color);*/
-    /*color: var(--md-primary-bg-color);*/
-    background-color: #0D1117;
-    padding-bottom: 3rem;
+  /* ── Kill page scroll on Home ─────────────────────────── */
+  html, body { overflow: hidden !important; height: 100%; }
+  .md-main, .md-main__inner, .md-content, .md-content__inner { overflow: visible !important; }
+  .md-content__inner:before { display: none; } /* removes MkDocs' top spacer */
+
+  /* ── Page: one screen, no scroll ─────────────────────── */
+  .profile-page {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    background: #0a0a0a;
   }
 
-  .home-header h1 {
-    color: inherit;
-    font-weight: 300;
-    margin-bottom: 0;
-    text-shadow: 0 0 0.2rem #018786;
+  /* ── Hero — 40% ───────────────────────────────────────── */
+  .profile-hero {
+    position: relative;
+    flex: 4;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    background: #080808;
+    border-bottom: 1px solid #1a1a1a;
   }
 
-  .home-header h2 {
-    font-weight: 200;
+  #hero-canvas {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
   }
 
-  .skills {
-    padding-top: 2rem;
+  .profile-hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+    background-size: 80px 80px;
+    pointer-events: none;
+    z-index: 1;
   }
 
-  .md-typeset .md-button {
-    background-color: #dd2e57;
-    color: var(--md-primary-bg-color);
-    border-color: #dd2e57;
+  .profile-hero__inner {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    padding: 0 32px;
+    max-width: 900px;
+    width: 100%;
   }
 
-  .md-typeset a {
-    text-decoration: none;
+  /* beats .md-typeset h1 specificity */
+  .profile-hero .profile-title {
+    font-size: clamp(48px, 9vw, 96px);
+    font-weight: 700;
+    letter-spacing: -0.04em;
+    line-height: 1.05;
+    color: #ffffff;
+    margin: 0 0 20px;
   }
 
-  .img-icon {
-    width: .9rem;
-    height: .9rem;
-    color: var(--md-primary-bg-color);
-    filter: invert(1);
+  .profile-bio {
+    font-size: 15px;
+    line-height: 1.7;
+    color: #9a9997;
+    max-width: 480px;
+    margin: 0 auto 32px;
+    text-align: center;
+  }
+
+  .profile-ctas {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .profile-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 11px 22px;
+    border-radius: 6px;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    text-decoration: none !important;
+    transition: background 0.15s, border-color 0.15s;
+    line-height: 1;
+  }
+
+  .profile-btn--primary {
+    background: #ffffff;
+    color: #080808 !important;
+    border: 1px solid #ffffff;
+  }
+  .profile-btn--primary:hover { background: #e0e0d7; border-color: #e0e0d7; }
+
+  .profile-btn--secondary {
+    background: rgba(255,255,255,0.04);
+    color: #faf9f5 !important;
+    border: 1px solid #3d3d3d;
+  }
+  .profile-btn--secondary:hover { border-color: #5e5e5e; background: rgba(255,255,255,0.08); }
+
+  .profile-btn img { width: 15px; height: 15px; filter: none; opacity: 0.85; }
+  .profile-btn--secondary img { filter: invert(1); opacity: 0.75; }
+
+  /* ── Sections — 30% each, no md-typeset margins ───────── */
+  .profile-section {
+    flex: 0 0 auto;
+    display: flex;
+    align-items: center;
+    padding: 32px 0;
+    background: #0a0a0a;
+    border-bottom: 1px solid #1a1a1a;
+    overflow: hidden;
+  }
+  .profile-section:last-child { border-bottom: none; }
+
+  .profile-section__inner {
+    width: 100%;
+    max-width: 1220px;
+    margin: 0 auto;
+    padding: 0 16px;
+    box-sizing: border-box;
+  }
+
+  .profile-section-label {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #5e5e5e;
+    margin: 0 0 16px;
+  }
+
+  /* ── Skill cards ──────────────────────────────────────── */
+  .profile-skills-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+  }
+
+  .profile-skill-card {
+    background: #0f0f0f;
+    border: 1px solid #1a1a1a;
+    border-radius: 8px;
+    padding: 18px 18px 14px;
+  }
+
+  .profile-skill-card__title {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #5e5e5e;
+    margin: 0 0 12px;
+  }
+
+  .profile-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+
+  .profile-tag {
+    font-size: 12px;
+    font-weight: 500;
+    padding: 3px 10px;
+    border-radius: 9999px;
+    background: #1a1a1a;
+    color: #aeadac;
+    border: 1px solid #2e2e2e;
+    white-space: nowrap;
+  }
+
+  /* ── OSS cards ────────────────────────────────────────── */
+  .profile-oss-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+
+  .profile-oss-card {
+    background: #0f0f0f;
+    border: 1px solid #1a1a1a;
+    border-radius: 8px;
+    padding: 22px 24px;
+    display: block;
+    text-decoration: none !important;
+    transition: border-color 0.15s, background 0.15s;
+  }
+  .profile-oss-card:hover { border-color: #2e2e2e; background: #141414; }
+
+  .profile-oss-card__title {
+    font-size: 14px;
+    font-weight: 600;
+    color: #bef0f5;
+    margin: 0 0 8px;
+  }
+
+  .profile-oss-card__desc {
+    font-size: 13px;
+    color: #aeadac;
+    line-height: 1.6;
+    margin: 0;
   }
 </style>
-<section class="mdx-container home-header">
-  <div class="md-grid md-typeset">
-    <div class="md-typeset container-fluid">
-      <div>
-        <h1>
-          About me
-        </h1>
-        <h2>
-          TOGAF® Certified Architect with 17 years of experience in delivering enterprise scale
-          architecture solutions within global financial services. I specialize in hexagonal
-          architecture, microservices and cloud-native systems. My expertise lies in building
-          high-performance platforms and mentoring teams. I am passionate about driving digital
-          transformation and standardizing architecture practices to enhance project delivery. I am
-          also an advocate of open-source software and have contributed to several projects over the
-          years, including:
-          <ul>
-            <li>
-              <a href="https://github.com/ff4j/ff4j-spring-boot-starter-parent" target="_blank">Feature
-                Flipping 4 Java</a>
-            </li>
-            <li>
-              <a href="https://github.com/devs-from-matrix/template-hexagonal-spring-boot-kotlin">Scaffolding
-                Hexagonal Architecture</a>
-            </li>
-          </ul>
-        </h2>
-        <div class="d-flex align-items-center">
-          <div class="pb-2"><h3 style="font-weight: bold">Connect with me on</h3></div>
-          <div class="px-2">
-            <a class="md-button md-button--secondary d-flex align-items-center"
-               href="https://github.com/paul58914080" target="_blank">
-              <img
-                  src="img/github.svg"
-                  alt="Take me to Paul's GitHub" class="img-icon"/>
-              <span class="d-none d-lg-block ms-2">Github</span>
-            </a>
+
+<div class="profile-page">
+
+  <!-- Hero -->
+  <section class="profile-hero">
+    <canvas id="hero-canvas"></canvas>
+    <div class="profile-hero__inner md-typeset">
+      <h1 class="profile-title">Paul Williams</h1>
+      <p class="profile-bio">
+        TOGAF® Certified Architect with 17 years of experience delivering enterprise-scale
+        architecture solutions in global financial services. Specialising in hexagonal architecture,
+        microservices, and cloud-native systems.
+      </p>
+      <div class="profile-ctas">
+        <a class="profile-btn profile-btn--primary" href="https://github.com/paul58914080" target="_blank">
+          <img src="img/github.svg" alt=""> GitHub
+        </a>
+        <a class="profile-btn profile-btn--secondary" href="https://www.linkedin.com/in/paulwilliamsj" target="_blank">
+          <img src="img/linkedin.svg" alt=""> LinkedIn
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <script>
+  (function () {
+    const canvas = document.getElementById('hero-canvas');
+    const ctx = canvas.getContext('2d');
+    function draw() {
+      const W = canvas.width  = canvas.offsetWidth;
+      const H = canvas.height = canvas.offsetHeight;
+      ctx.clearRect(0, 0, W, H);
+      const n = Math.floor(W * H / 4000);
+      for (let i = 0; i < n; i++) {
+        ctx.beginPath();
+        ctx.arc(Math.random()*W, Math.random()*H, Math.random()*1.1, 0, Math.PI*2);
+        ctx.fillStyle = `rgba(250,249,245,${Math.random()*0.45+0.08})`;
+        ctx.fill();
+      }
+      const cols=40,rows=14,cellW=W/cols,cellH=H*0.02,amp=H*0.055,oy=H*0.75;
+      function my(c,r){return oy+r*cellH-Math.sin(c*0.38)*Math.cos(r*0.55)*amp-Math.sin(c*0.15+r*0.4)*amp*0.4;}
+      ctx.lineWidth=0.5;
+      for(let r=0;r<rows;r++){
+        ctx.strokeStyle=`rgba(200,220,230,${0.07*(1-r/rows)})`;
+        ctx.beginPath();
+        for(let c=0;c<=cols;c++){const x=c*cellW,y=my(c,r);c===0?ctx.moveTo(x,y):ctx.lineTo(x,y);}
+        ctx.stroke();
+      }
+      for(let c=0;c<=cols;c++){
+        ctx.strokeStyle=`rgba(200,220,230,${0.04*(1-Math.abs(c-cols/2)/(cols/2))})`;
+        ctx.beginPath();
+        for(let r=0;r<rows;r++){const x=c*cellW,y=my(c,r);r===0?ctx.moveTo(x,y):ctx.lineTo(x,y);}
+        ctx.stroke();
+      }
+      const g=ctx.createRadialGradient(W/2,H*0.7,0,W/2,H*0.7,W*0.45);
+      g.addColorStop(0,'rgba(40,60,70,0.5)');g.addColorStop(0.5,'rgba(15,25,30,0.25)');g.addColorStop(1,'rgba(8,8,8,0)');
+      ctx.fillStyle=g;ctx.fillRect(0,0,W,H);
+    }
+    draw();
+    window.addEventListener('resize', draw);
+  })();
+  </script>
+
+  <!-- Skills — no md-typeset, no inherited paragraph margins -->
+  <section class="profile-section">
+    <div class="profile-section__inner">
+      <div class="profile-section-label">Skills &amp; Expertise</div>
+      <div class="profile-skills-grid">
+        <div class="profile-skill-card">
+          <div class="profile-skill-card__title">Backend</div>
+          <div class="profile-tags">
+            <span class="profile-tag">Java</span>
+            <span class="profile-tag">Spring Boot</span>
+            <span class="profile-tag">Kotlin</span>
+            <span class="profile-tag">Maven</span>
           </div>
-          <div class="px-2">
-            <a class="md-button md-button--secondary d-flex align-items-center"
-               href="https://www.linkedin.com/in/paulwilliamsj"
-               target="_blank">
-              <img
-                  src="img/linkedin.svg"
-                  alt="Take me to Paul's LinkedIn" class="img-icon">
-              <span class="d-none d-lg-block ms-2">LinkedIn</span>
-            </a>
+        </div>
+        <div class="profile-skill-card">
+          <div class="profile-skill-card__title">Frontend</div>
+          <div class="profile-tags">
+            <span class="profile-tag">TypeScript</span>
+            <span class="profile-tag">Angular</span>
+            <span class="profile-tag">React</span>
+            <span class="profile-tag">Bootstrap</span>
           </div>
-          <!--<div class="px-2">
-            <a class="md-button md-button&#45;&#45;secondary d-flex align-items-center"
-               href="cv/PaulWilliams.pdf" download aria-label="Download CV">
-              &lt;!&ndash; inline download SVG icon sized like .img-icon &ndash;&gt;
-              <svg class="img-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
-                <path transform="rotate(180 12 12)" d="M5 20h14v-2H5v2zm7-18L5.33 9h3.84v4h5.66V9h3.84L12 2z" />
-              </svg>
-              <span class="d-none d-lg-block ms-2">Download CV</span>
-            </a>
-          </div>-->
+        </div>
+        <div class="profile-skill-card">
+          <div class="profile-skill-card__title">Cloud &amp; DevOps</div>
+          <div class="profile-tags">
+            <span class="profile-tag">Azure</span>
+            <span class="profile-tag">Docker</span>
+            <span class="profile-tag">GitHub Actions</span>
+            <span class="profile-tag">Microservices</span>
+          </div>
+        </div>
+        <div class="profile-skill-card">
+          <div class="profile-skill-card__title">Architecture</div>
+          <div class="profile-tags">
+            <span class="profile-tag">TOGAF®</span>
+            <span class="profile-tag">Enterprise Architecture</span>
+            <span class="profile-tag">API Design</span>
+            <span class="profile-tag">DDD</span>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<section class="mdx-container skills">
-  <div class="md-grid container-fluid">
-    <div class="row md-typeset">
-      <h1 class="mb-1" style="color: white">Skills</h1>
-      <div class="container-fluid">
-        <div class="row">
-          <div class="col-md-6 col-sm-12 d-block">
-            <div class="skills-bar">
-              <div class="bar">
-                <div class="info">
-                  <span>Java</span>
-                </div>
-                <div class="progress-line"><span class="java"></span></div>
-                <div class="bar">
-                  <div class="info">
-                    <span>Spring boot</span>
-                  </div>
-                  <div class="progress-line"><span class="spring-boot"></span></div>
-                  <div class="bar">
-                    <div class="info">
-                      <span>Kotlin</span>
-                    </div>
-                    <div class="progress-line"><span class="kotlin"></span></div>
-                    <div class="bar">
-                      <div class="info">
-                        <span>Maven</span>
-                      </div>
-                      <div class="progress-line">
-                        <span class="maven"></span>
-                      </div>
-                      <div class="bar">
-                        <div class="info">
-                          <span>Azure</span>
-                        </div>
-                        <div class="progress-line"><span class="azure"></span></div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-6 col-sm-12 d-block">
-            <div class="skills-bar">
-              <div class="bar">
-                <div class="info">
-                  <span>Typescript</span>
-                </div>
-                <div class="progress-line"><span class="typescript"></span></div>
-                <div class="bar">
-                  <div class="info">
-                    <span>Angular</span>
-                  </div>
-                  <div class="progress-line"><span class="angular"></span></div>
-                  <div class="bar">
-                    <div class="info">
-                      <span>React</span>
-                    </div>
-                    <div class="progress-line"><span class="react"></span></div>
-                    <div class="bar">
-                      <div class="info">
-                        <span>Bootstrap</span>
-                      </div>
-                      <div class="progress-line">
-                        <span class="bootstrap"></span>
-                      </div>
-                      <div class="bar">
-                        <div class="info">
-                          <span>Yarn</span>
-                        </div>
-                        <div class="progress-line"><span class="yarn"></span></div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
+  <!-- Open Source — no md-typeset -->
+  <section class="profile-section">
+    <div class="profile-section__inner">
+      <div class="profile-section-label">Open Source Contributions</div>
+      <div class="profile-oss-grid">
+        <a class="profile-oss-card" href="https://github.com/ff4j/ff4j-spring-boot-starter-parent" target="_blank">
+          <div class="profile-oss-card__title">Feature Flipping for Java</div>
+          <div class="profile-oss-card__desc">Spring Boot starter for FF4J — feature flag management for Java applications.</div>
+        </a>
+        <a class="profile-oss-card" href="https://github.com/devs-from-matrix/template-hexagonal-spring-boot-kotlin" target="_blank">
+          <div class="profile-oss-card__title">Hexagonal Architecture Scaffold</div>
+          <div class="profile-oss-card__desc">Template for bootstrapping Spring Boot applications with hexagonal architecture in Kotlin.</div>
+        </a>
       </div>
     </div>
-  </div>
-</section>
+  </section>
+
+</div>
+
+<script>
+(function () {
+  var page = document.querySelector('.profile-page');
+  function fit() {
+    var top = page.getBoundingClientRect().top + window.scrollY;
+    page.style.height = (window.innerHeight - top) + 'px';
+  }
+  fit();
+  window.addEventListener('resize', fit);
+})();
+</script>
 
 {% endblock %}
 {% block content %}{% endblock %}
