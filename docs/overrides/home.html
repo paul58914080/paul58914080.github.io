@@ -243,6 +243,17 @@
     white-space: pre; overflow-x: auto;
     text-align: start;
   }
+  .caret {
+    display: inline-block;
+    width: 2px;
+    height: 1.05em;
+    margin: 0 1px -0.16em;
+    background: #c3e88d;
+    animation: caret-blink 1.05s step-end infinite;
+  }
+  @keyframes caret-blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+  @media (prefers-reduced-motion: reduce) { .caret { animation: none; } }
+
   .tok-kw  { color: #c792ea; }
   .tok-fn  { color: #82aaff; }
   .tok-str { color: #c3e88d; }
@@ -353,7 +364,7 @@
             profile.ts
           </div>
 <pre class="skills-card__code"><span class="tok-kw">export default</span> <span class="tok-fn">defineArchitect</span>({
-  name: <span class="tok-str">"Paul Williams"</span>,
+  name: <span class="tok-str">"Paul Williams</span><span class="caret"></span><span class="tok-str">"</span>,
   certified: <span class="tok-str">"TOGAF®"</span>,
   experience: <span class="tok-num">17</span>,
   focus: [<span class="tok-str">"Modernization"</span>, <span class="tok-str">"AI"</span>],
