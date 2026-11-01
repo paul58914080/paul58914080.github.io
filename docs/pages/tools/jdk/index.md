@@ -37,6 +37,30 @@ To set a specific Java version as the default, use:
 ```shell
 sdk default java 21.0.2-tem
 ```
+
+## Configure rc files
+
+To configure SDKMAN to use a specific Java version by default, add the following line to your project's `~/.sdkmanrc` file:
+
+```shell title="~/.sdkmanrc"
+touch ~/.sdkmanrc
+echo "java=21.0.2-tem" >> ~/.sdkmanrc
+```
+
+You can then use the following command to apply the configuration:
+
+```shell
+sdk env
+```
+
+### Symbolic link
+
+As there could be multiple versions of Java installed, you can create a symbolic link to the desired version. For example, to create a symbolic link for Java 21.0.2-tem, use the following command:
+
+```shell 
+ln -sfn ~/.sdkman/candidates/java/21.0.2-tem 21-tem
+```
+
 ## Configuration
 
 ### Certificates
